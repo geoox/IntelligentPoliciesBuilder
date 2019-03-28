@@ -4,11 +4,11 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: 'user',
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'dashboard',
         children: [
           {
             path: '',
@@ -17,7 +17,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab2',
+        path: 'achievements',
         children: [
           {
             path: '',
@@ -26,7 +26,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab3',
+        path: 'analytics',
         children: [
           {
             path: '',
@@ -35,16 +35,20 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'profile',
+        children: [
+          {
+            path: '',
+            loadChildren: '../tab4/tab4.module#Tab4PageModule'
+          }
+        ]
+      },
+      {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: 'dashboard',
         pathMatch: 'full'
       }
     ]
-  },
-  {
-    path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
   }
 ];
 
