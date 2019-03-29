@@ -1,11 +1,189 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Dashboard
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="dashboard">
 
-<ion-content>
-    <p>Dashboard works!</p>
+  <div class="dashboard-header">
+    <ion-row>
+      <ion-col size="9" class="ion-float-left">
+        <p>Wednesday
+          <strong>25 March</strong>
+        </p>
+        <p><strong>Week 10</strong></p>
+      </ion-col>
+      <ion-col size="3" class="dashboard-avatar">
+        <ion-avatar class="ion-float-right">
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div class="dashboard-cards">
+    <ion-row>
+      <ion-col>
+        <ion-card style="background-color: white;">
+          <ion-card-header>
+              <ion-row>
+                  <ion-col size="9">
+                      <ion-card-subtitle>Walk</ion-card-subtitle>
+                  </ion-col>
+                  <ion-col size="3">
+                      <ion-icon name="walk" class="card-icon"></ion-icon>
+                  </ion-col>
+                </ion-row>
+            
+            
+          </ion-card-header>
+
+          <ion-card-content>
+            <div class="circle-container">
+              <circle-progress
+              [percent]="42"
+              [radius]="24"
+              [outerStrokeWidth]="6"
+              [innerStrokeWidth]="3"
+              [outerStrokeColor]="'#3881ff'"
+              [innerStrokeColor]="'#d8e6ff'"
+              [animation]="true"
+              [animationDuration]="300"
+              [renderOnClick]="false"
+              [responsive]="true"
+              [subtitle] = '[salut]'
+              [titleFontSize]="8"
+              [unitsFontSize]="6"
+              [subtitleFontSize]="6"
+            ></circle-progress>
+          </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col>
+        <ion-card style="background-color: white;">
+          <ion-card-header>
+            <ion-row>
+                <ion-col size="9">
+                    <ion-card-subtitle>Sleep</ion-card-subtitle>
+                </ion-col>
+                <ion-col size="3">
+                    <ion-icon name="moon" class="card-icon" style="color: wheat;"></ion-icon>
+                </ion-col>
+              </ion-row>
+          </ion-card-header>
+          <ion-card-content>
+              <div class="circle-container">
+                <div class="workout">
+                    <div class="circle-container">
+                        <circle-progress
+                        [percent]="87"
+                        [radius]="24"
+                        [outerStrokeWidth]="6"
+                        [innerStrokeWidth]="3"
+                        [outerStrokeColor]="'black'"
+                        [innerStrokeColor]="'#a6a6a6'"
+                        [animation]="true"
+                        [animationDuration]="300"
+                        [renderOnClick]="false"
+                        [responsive]="true"
+                        [subtitle] = "'Hours'"
+                        [titleFontSize]="8"
+                        [unitsFontSize]="6"
+                        [subtitleFontSize]="6"
+                      ></circle-progress>
+                    </div>
+                </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card style="background-color: white;">
+          <ion-card-header>
+            <ion-row>
+                <ion-col size="9">
+                    <ion-card-subtitle>Workout</ion-card-subtitle>
+                </ion-col>
+                <ion-col size="3">
+                    <ion-icon name="fitness" class="card-icon"></ion-icon>
+                </ion-col>
+              </ion-row>
+          </ion-card-header>
+
+          <ion-card-content>
+            <div class="circle-container">
+            <ion-progress-bar value="0.5" buffer="0.5" style="margin-top: 3vh;"></ion-progress-bar>
+              <div class="workout" style="margin-top: 3vh;">
+                <h1> 2 / 4</h1>
+                <h5>Session(s)</h5>
+              </div>
+          </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card style="background-color: #dd5152;">
+            <ion-card-header>
+                <ion-row>
+                    <ion-col>
+                        <ion-card-subtitle class="white">Heart Rate</ion-card-subtitle>
+                    </ion-col>
+                    <ion-col>
+                        <img src="../../assets/gif/heart.gif" alt="heart" style="height: auto; max-width: 55%; float: right; margin-top: 10px;">
+                    </ion-col>
+                  </ion-row>
+              </ion-card-header>
+              <ion-card-content>
+                  <div class="circle-container">
+                    <div class="workout white" style="margin-top: 3vh;">
+                      <h1>72</h1>
+                      <h5>bpm</h5>
+                    </div>
+                </div>
+              </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card style="background-color: white;">
+          <ion-card-header>
+            <ion-row>
+              <ion-col size="9">
+                  <ion-card-subtitle>Points</ion-card-subtitle>
+              </ion-col>
+              <ion-col size="3"> 
+                  <ion-icon name="podium" class="card-icon"></ion-icon>
+              </ion-col>       
+            </ion-row>
+          </ion-card-header>
+          <ion-card-content>
+            <h1>7,522</h1>
+            <h2 style="margin-top: 3vh;">Up with 3,422 since last week</h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card style="background-color: white;">
+          <ion-card-header>
+            <ion-row>
+              <ion-col size="9">
+                  <ion-card-subtitle>Results</ion-card-subtitle>
+              </ion-col>
+              <ion-col size="3"> 
+                  <ion-icon name="trophy" class="card-icon"></ion-icon>
+              </ion-col>       
+            </ion-row>
+          </ion-card-header>
+          <ion-card-content>
+            <h1>3</h1>
+            <h3>Achievements</h3>
+            <h1 style="margin-top: 1vh;">$501</h1>
+            <h3>Earned</h3>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-content>

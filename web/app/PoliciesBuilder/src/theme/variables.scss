@@ -1,8 +1,31 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: lighter;
+  src: url('../assets/fonts/Montserrat-Regular.otf');
+}
+
+
+@font-face {
+  font-family: 'SourceSansProLight';
+  font-style: normal;
+  font-weight: lighter;
+  src: url('../assets/fonts/SourceSansPro-Light.otf');
+}
+
+@font-face {
+  font-family: 'SourceSansPro';
+  font-style: normal;
+  font-weight: lighter;
+  src: url('../assets/fonts/SourceSansPro-Regular.otf');
+}
 /** Ionic CSS Variables **/
 :root {
+  /** font **/ 
+  --ion-font-family: 'SourceSansPro';
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
