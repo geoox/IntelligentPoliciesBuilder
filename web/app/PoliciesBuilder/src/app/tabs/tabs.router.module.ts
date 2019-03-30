@@ -49,6 +49,11 @@ const routes: Routes = [
         pathMatch: 'full'
       }
     ]
+  },
+  {
+    path: '',
+    redirectTo: 'user/dashboard',
+    pathMatch: 'full'
   }
 ];
 
