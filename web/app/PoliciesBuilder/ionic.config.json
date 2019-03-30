@@ -1,5 +1,7 @@
 {
   "name": "PoliciesBuilder",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
