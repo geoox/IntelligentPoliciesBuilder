@@ -1,0 +1,57 @@
+.profile{
+    --background: linear-gradient(to top, #ffffff, #f4f4f6, #e8e9ee, #dbdfe5, #cdd5dc);
+
+    ion-card, ion-card-content{
+        width: 100%;
+        height: 40vh;
+        position: relative;
+    }
+
+    ion-card-content{
+        background-color: white;
+    }
+
+    ion-card{
+        margin:0;
+        border-bottom-left-radius: 50px;
+        border-bottom-right-radius: 50px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+
+    .profile-header{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile-avatar{
+        text-align: center;
+        margin-top: 7vh;
+    }
+
+    .profile-info{
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        width: 90vw;
+        margin:auto;
+        padding: 12px;
+
+        ion-col{
+            margin-top: 7px;
+            margin-bottom: 7px;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    ion-avatar{
+        margin: auto;
+    }
+
+    .info-bold{
+        font-weight: bold;
+        font-size: 120%;
+    }
+}
