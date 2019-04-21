@@ -38,9 +38,18 @@
 		 changer.addEventListener("sectionchange", pageIndicatorHandler, false);
 		 
 		window.addEventListener( 'tizenhwkey', function( ev ) {
-			if( ev.keyName === "back" ) {
-				window.history.back();
+			if (ev.keyName === "back") {
+				debugger;
+				if(window.history.state.url === "file:///index.html") {
+					try {
+						tizen.application.getCurrentApplication().exit();
+					} catch (ignore) {
+					}
+				} else {
+					window.history.back();
+				}
 			}
+
 		});
   })();
   
