@@ -3,8 +3,54 @@ const mongoose = require('mongoose');
 const userSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     name: String,
-    points: Number
-})
+    birthDate: Date,
+    email: String,
+    height: Number,
+    weight: Number,
+    gender: {
+      type: String,
+      enum: ['Male', 'Female']
+    },
+    steps: [
+      {
+        // date: Date,
+        // numberSteps: Number,
+        // totalTime: Number
+      }
+    ],
+    workouts: [
+      {
+        // date: Date,
+        // type: String,
+        // totalTime: Number
+      }
+    ],
+    sleep:[
+      {
+        // timestamp: Date,
+        // totalTime: Number
+      }
+    ],
+    achievements:[
+      {
+        // name: String,
+        // tsAchieved: Date
+      }
+    ],
+    currentPoints: Number,
+    historyPoints: [
+      {
+        // totalPoints: Number,
+        // tsStart: Date,
+        // tsEnd: Date
+      }
+    ],
+    insurancePlan: {
+      // tsStart: Date,
+      // tsEnd: Date,
+      // monthlyFee: Number
+    }
+});
 
 module.exports = mongoose.model('User', userSchema);
 /*
@@ -30,30 +76,34 @@ module.exports = mongoose.model('User', userSchema);
           "type":""
         }  
       ],
-      "sleeps":[
+      "sleep":[
         {
-          "date":"",
+          "ts":"",
           "totalTime":""
         }
       ],
       "achievements":[
         {
           "name":"",
-          "isAchieved":""
+          "tsAchieved":""
         }
       ],
-      "points":{
-        "currentPoints":"",
-        "historyPoints":[
-          {
-            "totalPoints":"",
-            "tsStart":"",
-            "tsEnd":""
-          }
-        ]
+      "currentPoints":{
+          "totalPoints":"",
+          "tsStart":"",
+          "tsEnd":""
       },
+      "historyPoints":[
+        {
+          "totalPoints":"",
+          "tsStart":"",
+          "tsEnd":""
+        }
+      ],
       "insurancePlan":{
-        
+        tsStart:"",
+        tsEnd:"",
+        monthlyFee:""
       }
     }
   
