@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-tab1',
@@ -6,9 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  salut: any;
+  todayDay: any;
+  todayMonth: any;
 
   constructor() {
-    this.salut = 'Steps';
+    this.todayDay = moment().format('dddd');
+    this.todayMonth = moment().format('DD MMMM');
   }
 }

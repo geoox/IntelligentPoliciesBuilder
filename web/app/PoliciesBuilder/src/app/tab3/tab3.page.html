@@ -1,11 +1,51 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Analytics
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="analytics">
+  <ion-slides scrollbar="true" [options]="slideOpts">
+    <ion-slide>
+      <ion-card class="carousel-card" style="background-color: #4286F4;">
+        <span><b>2551</b> <br> total points</span>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card class="carousel-card" style="background-color: #3F77D0;">
+        <span><b>125</b> <br> total hours working out</span>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card class="carousel-card" style="background-color: #3D68AD;">
+        <span><b>4959124</b> <br> total steps</span>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card class="carousel-card" style="background-color: #3B598A;">
+        <span><b>125</b>$ <br> saved</span>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card class="carousel-card" style="background-color: #394A67;">
+        <span><b>1214</b> <br> total hours slept</span> 
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 
-<ion-content>
-  <p>Analytics works!</p>
+
+  <ion-row>
+    <ion-card style="width: 100%; background-color: white;">
+      <ion-card-content>
+        <canvas id="weeklyActivityChart" width="200" height="200">
+        </canvas>
+      </ion-card-content>
+    </ion-card>
+  </ion-row>
+
+  <ion-row>
+    <ion-card style="width: 100%; background-color: white;">
+      <ion-card-content>
+        <canvas id="budgetChart" width="200" height="200">
+        </canvas>
+      </ion-card-content>
+    </ion-card>
+  </ion-row>
+
+
+
 </ion-content>

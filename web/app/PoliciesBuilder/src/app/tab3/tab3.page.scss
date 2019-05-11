@@ -1,1 +1,13 @@
+.analytics{
+    --background: linear-gradient(to top, #ffffff, #f4f4f6, #e8e9ee, #dbdfe5, #cdd5dc);
+    ion-slides{
+        height: 50vh;
+    }
 
+    .carousel-card{
+        height: 60%;
+        width: 100%;
+        color: white;
+    }
+
+}
