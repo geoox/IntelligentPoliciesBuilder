@@ -1,5 +1,31 @@
   (function()
   {
+	  tizen.ppm.requestPermission("http://tizen.org/privilege/healthinfo", function(){
+		  tizen.ppm.requestPermission("http://tizen.org/privilege/location", function(){
+			  console.log('sensors available');
+			  
+				//start tracking data
+
+				var options = {
+				    retentionPeriod: 48 /* 48 hours */
+				}
+				try {
+				    tizen.humanactivitymonitor.startRecorder("PEDOMETER", options);
+				} catch (err) {
+				    console.log(err.name + ' - pedometer start err- : ' + err.message);
+				}
+				try {
+				    tizen.humanactivitymonitor.startRecorder("SLEEP_MONITOR", options);
+				} catch (err) {
+				    console.log(err.name + ' - sleep start err- : ' + err.message);
+				}
+		  }, function(){
+			  console.log('location sensors NOT available');
+		  });
+	  }, function(){
+		  console.log('healthinfo sensors NOT available');
+	  });
+
      var page = document.getElementById("main-page"),
 	     changer = document.getElementById("main"),
 	     sectionChanger,
@@ -36,20 +62,6 @@
 		
 		 /* Bind the callback */
 		 changer.addEventListener("sectionchange", pageIndicatorHandler, false);
-		 
-		window.addEventListener( 'tizenhwkey', function( ev ) {
-			if (ev.keyName === "back") {
-				debugger;
-				if(window.history.state.url === "file:///index.html") {
-					try {
-						tizen.application.getCurrentApplication().exit();
-					} catch (ignore) {
-					}
-				} else {
-					window.history.back();
-				}
-			}
-
-		});
+		 		
   })();
   

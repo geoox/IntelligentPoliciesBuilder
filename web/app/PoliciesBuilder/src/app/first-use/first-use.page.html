@@ -1,0 +1,111 @@
+<ion-content class="first-use" zooming="false">
+    <ion-slides [options]="slideOpts">
+
+      <ion-slide>
+        <span>Hello there!</span>
+        <span>Please enter the requested information to get you started!</span>
+      </ion-slide>
+
+      <ion-slide>
+        <div class="info-msg">
+          <span>Please enter your name and gender</span>
+        </div>
+        <div class="sport-img">
+          <img src="../../assets/gif/sport-1.gif" alt="Sport-gif">
+        </div>
+        <div class="input-label">
+          <ion-item>
+            <ion-label position="floating">name</ion-label>
+            <ion-input (keyup) = "onNameChange($event)"></ion-input>
+          </ion-item>
+        </div>
+        <div class="gender-list">
+          <ion-list>
+            <ion-radio-group>
+              <ion-list-header>
+                <ion-label>Gender</ion-label>
+              </ion-list-header>
+          
+              <ion-item>
+                <ion-label>male</ion-label>
+                <ion-radio slot="start" value="male"></ion-radio>
+              </ion-item>
+          
+              <ion-item>
+                <ion-label>female</ion-label>
+                <ion-radio slot="start" value="female"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+        </div>
+
+      </ion-slide>
+
+      <ion-slide>
+          <div class="info-msg">
+            <span>Please enter your birth date</span>
+          </div>
+          <div class="sport-img">
+            <img src="../../assets/gif/sport-2.gif" alt="Sport-gif">
+          </div>
+          <div class="input-label">
+              <ion-item>
+                <ion-label>birth date</ion-label>
+                <ion-datetime display-format="DDDD MMM D, YYYY" min="1910"></ion-datetime>
+              </ion-item>
+          </div>
+      </ion-slide>
+
+      <ion-slide>
+        <div class="info-msg">
+          <span>Please enter your height and weight</span>
+        </div>
+        <div class="sport-img">
+          <img src="../../assets/gif/sport-3.gif" alt="Sport-gif">
+        </div>
+        <div class="input-label">
+          <ion-item>
+            <ion-label position="floating">height (cm)</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+        </div>
+        <div class="input-label">
+          <ion-item>
+            <ion-label position="floating">weight (kg)</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+        </div>
+    </ion-slide>
+    <ion-slide>
+        <div class="info-msg">
+          <span>Please enter your insurance policy details</span>
+        </div>
+        <div class="sport-img">
+          <img src="../../assets/gif/sport-6.gif" alt="Sport-gif">
+        </div>
+        <div class="input-label">
+          <ion-item>
+            <ion-label position="floating">monthly subscription cost ($)</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+        </div>
+        <div class="insurance-start">
+            <ion-item>
+              <ion-label>insurance start date</ion-label>
+              <ion-datetime display-format="DDDD MMM D, YYYY" min="2000"></ion-datetime>
+            </ion-item>
+        </div>
+        <div class="insurance-end">
+          <ion-item>
+            <ion-label>insurance end date</ion-label>
+            <ion-datetime display-format="DDDD MMM D, YYYY" min="2019" max="2030"></ion-datetime>
+          </ion-item>
+      </div>
+
+      <ion-button style="margin-top: 5vh;">
+          <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
+        Ready !
+      </ion-button>
+    </ion-slide>
+    </ion-slides>
+</ion-content>

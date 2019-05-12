@@ -1,0 +1,15 @@
+.first-use{
+    ion-slide{
+        height: 100vh;
+        flex-direction: column;
+    }
+
+    .info-msg, .sport-img{
+        margin-bottom: 7vh;
+    }
+
+    .gender-list{
+        margin-top: 2vh;
+        width: 80%;
+    }
+}

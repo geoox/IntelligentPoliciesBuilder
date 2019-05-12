@@ -1,6 +1,10 @@
-.achievements-cards{
-    ion-card{
-        width: 100%;
-        margin: 10px 16px;
+.achievements{
+    --background: linear-gradient(to top, #ffffff, #f4f4f6, #e8e9ee, #dbdfe5, #cdd5dc);
+    .achievements-cards{
+        ion-card{
+            background-color: white;
+            width: 100%;
+            margin: 10px 16px;
+        }
     }
 }
