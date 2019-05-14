@@ -1,11 +1,12 @@
 <div class="ui-page ui-page-active">
    <header class="ui-header ui-has-more">
-      <h2 class="ui-title">Update data</h2>
+      <h2 class="ui-title" style="padding-right: 0px;">Update data</h2>
    </header>
-   <div class="ui-content" style="overflow-y: scroll;">
-   	<p>Last refresh: 21.04.2019/14:14
+   <div class="ui-content" style="overflow-y: scroll; padding-bottom: 0px;">
+   	<p>Last refresh: <br><span id="lastRefresh"></span></p>
    </div>
    <footer class="ui-footer">
-      <button type="button" class="ui-btn" onclick="page4()">Refresh</button>
+      <button type="button" class="ui-btn" onclick="onRefreshTapped()">Refresh</button>
    </footer>
+	<script src="page4.js"></script>
 </div>

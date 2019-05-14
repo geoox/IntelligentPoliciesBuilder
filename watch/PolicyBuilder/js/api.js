@@ -12,6 +12,3 @@ fetch('https://floating-sea-64607.herokuapp.com/users')
     }
   );
 
-var sensors = tizen.sensorservice.getAvailableSensors();
-console.log('Available sensor: ' + sensors.toString());
-

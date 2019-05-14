@@ -1,5 +1,6 @@
   (function()
   {
+	  
 	  tizen.ppm.requestPermission("http://tizen.org/privilege/healthinfo", function(){
 		  tizen.ppm.requestPermission("http://tizen.org/privilege/location", function(){
 			  console.log('sensors available');
@@ -7,7 +8,7 @@
 				//start tracking data
 
 				var options = {
-				    retentionPeriod: 48 /* 48 hours */
+				    retentionPeriod: 96 /* 96 hours */
 				}
 				try {
 				    tizen.humanactivitymonitor.startRecorder("PEDOMETER", options);
@@ -36,7 +37,7 @@
 		 page.addEventListener("pagebeforeshow", function()
 		 {
 		    /* Create PageIndicator */
-		    pageIndicator =  tau.widget.PageIndicator(elPageIndicator, {numberOfPages: 4});
+		    pageIndicator =  tau.widget.PageIndicator(elPageIndicator, {numberOfPages: 3});
 		    pageIndicator.setActive(0);
 		
 		    sectionChanger = new tau.widget.SectionChanger(changer,
@@ -62,6 +63,12 @@
 		
 		 /* Bind the callback */
 		 changer.addEventListener("sectionchange", pageIndicatorHandler, false);
+
+		 window.addEventListener( 'tizenhwkey', function( ev ) {
+			if (ev.keyName === "back") {
+					window.history.back();
+			}
+		});	
 		 		
   })();
   
