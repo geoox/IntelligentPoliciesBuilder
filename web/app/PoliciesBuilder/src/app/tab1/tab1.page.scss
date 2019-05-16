@@ -2,6 +2,10 @@
     // --background: linear-gradient(to bottom, #426ac8, #688fd8, #93b3e5, #c3d7f0, #f9fafb);
     --background: linear-gradient(to top, #ffffff, #f4f4f6, #e8e9ee, #dbdfe5, #cdd5dc);
 
+    ion-card{
+        position: relative;
+    }
+
     .dashboard-header{
         margin-top: 4vh;
 
@@ -32,7 +36,7 @@
         ion-card{
             margin: 7px 3px 7px 3px;
             border-radius: 20px;
-            min-height: 30vh;
+            height: 35vh;
         }
         ion-card-header{
             padding-bottom: 0px;
@@ -51,6 +55,103 @@
 
     }
 
+    .update-time-walk{
+        background-color: #3880ff;
+        color: white;
+        text-align: center;
+        padding: 5px;
+        font-size: 2vh;
+        height: 15vh;
+    }
+
+    .update-time-hr{
+        background-color: white;
+        color: #dd5152;
+        text-align: center;
+        padding: 5px;
+        font-size: 2vh;
+        margin-top: 6vh;
+        height: 15vh;
+    }
+
+    .workout-content-up{
+        background-color: white;
+        text-align: center;
+    }
+
+    .workout-content-down{
+        background-color: #394a67;
+        color: white;
+        text-align: center;
+        height: 20vh;
+    }
+
+}
+
+.loading-screen-walk{
+    background: url('../../assets/gif/sport-6.gif');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+}
+
+.loading-screen-distance{
+    background: url('../../assets/gif/sport-4.gif');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+}
+
+.loading-screen-workout{
+    background: url('../../assets/gif/sport-2.gif');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+}
+
+.loading-screen-hr{
+    background: url('../../assets/gif/sport-1.gif');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+}
+
+.loading-screen-points{
+    background: url('../../assets/gif/sport-5.gif');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+}
+
+.loading-screen-results{
+    background: url('../../assets/gif/sport-3.gif');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
 }
 
 .white{

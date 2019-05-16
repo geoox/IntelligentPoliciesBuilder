@@ -16,6 +16,22 @@ export class Tab3Page {
     spaceBetween: 30
   };
 
+  totalPoints;
+  loadingTotalPoints;
+
+  totalSteps;
+  loadingTotalSteps;
+
+  totalDistance;
+  loadingTotalDistance;
+
+  totalCalories;
+
+  totalRunningSteps;
+
+  averageHR;
+  loadingHR;
+
   constructor(){
     
   }
@@ -23,6 +39,73 @@ export class Tab3Page {
   ngOnInit(){
     this.renderWeeklyChart();
     this.renderBudgetChart();
+
+    this.getAverageHR();
+    this.getTotalDistance();
+    this.getTotalPoints();
+    this.getTotalSteps();
+  }
+
+  getTotalPoints(){
+    this.loadingTotalPoints = true;
+    fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/totalPoints')
+    .then( (resp) => {
+      resp.json().then( (totalPoints) => {
+        this.totalPoints = totalPoints.totalPoints;
+      });
+      this.loadingTotalPoints = false;
+    })
+    .catch( (err) => {
+      console.log('GET totalPoints failed', err);
+    });
+  }
+
+  getTotalSteps(){
+    this.loadingTotalSteps = true;
+    fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/totalSteps')
+    .then( (resp) => {
+      resp.json().then( (stepsResp) => {
+        this.totalSteps = stepsResp.totalSteps;
+        this.totalCalories = stepsResp.calories;
+        this.totalRunningSteps = stepsResp.totalRunningSteps;
+      });
+      this.loadingTotalSteps = false;
+    })
+    .catch( (err) => {
+      console.log('GET totalSteps failed', err);
+    });
+  }
+
+  getTotalDistance(){
+    this.loadingTotalDistance = true;
+    fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/totalDistance')
+    .then( (resp) => {
+      resp.json().then( (totalDistance) => {
+        this.totalDistance = totalDistance.totalDistance;
+      });
+      this.loadingTotalDistance = false;
+    })
+    .catch( (err) => {
+      console.log('GET totalDistance failed', err);
+    });
+  }
+
+  getAverageHR(){
+    this.loadingHR = true;
+    fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/last10HR')
+    .then( (resp) => {
+      resp.json().then( (heartRates) => {
+        let heartRatesArr = [];
+        heartRates.forEach(element => {
+          heartRatesArr.push(element.heartRate);
+        });
+        this.averageHR = heartRatesArr.reduce((a,b)=>a+b, 0) / heartRatesArr.length;
+      });
+      this.loadingHR = false;
+    })
+    .catch( (err) => {
+      console.log('GET totalDistance failed', err);
+    });
   }
 
   renderWeeklyChart(){
