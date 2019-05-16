@@ -3,7 +3,7 @@ function onRefreshTapped(){
 	var updatedData = new Date().toDateString();
 	document.getElementById('lastRefresh').innerHTML = updatedData;
 	
-//	getHRData();
+	getHRData();
 	getPedometerData();
 }
 
@@ -47,7 +47,7 @@ function postHRData(HRValue){
 }
 
 function getPedometerData(){
-	
+	// steps, distance, run (with calories)
 	function onerror(error) {
 	    console.log(error.name + ': ' + error.message);
 	}
@@ -72,9 +72,10 @@ function getPedometerData(){
         	runObj['startTime'] = lastRecord['startTime'];
         	runObj['endTime'] = lastRecord['endTime'];
         	runObj['runStepCount'] = lastRecord['runStepCount'];
+        	runObj['calories'] = lastRecord['calories'];
         	
         	console.log('runObj', runObj);
-//        	postWorkout(runObj);
+        	postWorkout(runObj);
         }
         
         var distanceObj={};
@@ -83,7 +84,7 @@ function getPedometerData(){
         distanceObj['distance'] = lastRecord['distance'];
         
         console.log('distanceObj', distanceObj);
-//        postDistance(distanceObj);
+        postDistance(distanceObj);
         
 	}
 
@@ -100,13 +101,13 @@ function getPedometerData(){
 }
 
 function postSteps(stepsData){
-	fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772', {
+	fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/patchSteps', {
 	    method: 'PATCH',
 	    headers: {
 	      'Accept': 'application/json',
 	      'Content-Type': 'application/json'
 	    },
-	    body: JSON.stringify([{"propName":"steps","value": {"walkStepCount": stepsData['walkStepCount'],"startTime": stepsData['startTime'], "endTime": stepsData['endTime'] }}])
+	    body: JSON.stringify({"walkStepCount": stepsData['walkStepCount'],"startTime": stepsData['startTime'], "endTime": stepsData['endTime'] })
 	  }).then(function(response){
 		  console.log('steps post success', response);
 	  },
@@ -116,13 +117,13 @@ function postSteps(stepsData){
 }
 
 function postWorkout(runData){
-	fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772', {
+	fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/patchWorkout', {
 	    method: 'PATCH',
 	    headers: {
 	      'Accept': 'application/json',
 	      'Content-Type': 'application/json'
 	    },
-	    body: JSON.stringify([{"propName":"workouts","value": {"runStepCount": runData['runStepCount'], "startTime": runData['startTime'], "endTime": runData['endTime'] }}])
+	    body: JSON.stringify({"runStepCount": runData['runStepCount'], "startTime": runData['startTime'], "endTime": runData['endTime'] })
 	  }).then(function(response){
 		  console.log('workouts post success', response);
 	  },
@@ -132,15 +133,15 @@ function postWorkout(runData){
 }
 
 function postDistance(distanceData){
-	fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772', {
+	fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/patchDistance', {
 	    method: 'PATCH',
 	    headers: {
 	      'Accept': 'application/json',
 	      'Content-Type': 'application/json'
 	    },
-	    body: JSON.stringify([{"propName":"distance","value": {"distance": distanceData['distance'], "startTime": distanceData['startTime'], "endTime": distanceData['endTime'] }}])
+	    body: JSON.stringify({"distance": distanceData['distance'], "startTime": distanceData['startTime'], "endTime": distanceData['endTime'] })
 	  }).then(function(response){
-		  console.log('workouts post success', response);
+		  console.log('distance post success', response);
 	  },
 	  function(err){
 		console.log(err);  
