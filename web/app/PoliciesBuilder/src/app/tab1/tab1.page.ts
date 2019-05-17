@@ -117,18 +117,22 @@ export class Tab1Page {
     fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/latestWorkout')
     .then( (resp) => {
       resp.json().then( (formattedWorkout) => {
-        this.currentWorkout = formattedWorkout.runStepCount;
-        this.workoutCalories = formattedWorkout.calories;
-        this.lastUpdateWorkout = {};
-        this.lastUpdateWorkout['startTime'] = moment.unix(formattedWorkout.startTime/1000).format("MMMM Do, HH:mm");
-        this.lastUpdateWorkout['endTime'] =  moment.unix(formattedWorkout.endTime/1000).format("MMMM Do, HH:mm");
+        if (formattedWorkout.error) {
+          this.currentWorkout = 'N/A'
+          this.workoutCalories = 'N/A';
+        } else {
+          this.currentWorkout = formattedWorkout.runStepCount;
+          this.workoutCalories = formattedWorkout.calories;
+          this.lastUpdateWorkout = {};
+          this.lastUpdateWorkout['startTime'] = moment.unix(formattedWorkout.startTime/1000).format("MMMM Do, HH:mm");
+          this.lastUpdateWorkout['endTime'] =  moment.unix(formattedWorkout.endTime/1000).format("MMMM Do, HH:mm");
+        }
       });
       this.loadingWorkout = false;
     })
     .catch( (err) => {
-      console.log('GET latestDistance failed', err);
+      console.log('GET latestWorkout failed', err);
       this.loadingWorkout = false;
-      this.currentDistance = 'Please try again later';
     });
   }
 

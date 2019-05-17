@@ -24,7 +24,7 @@
     <ion-row>
 
       <ion-col>
-        <ion-card style="background-color: white;" (click)="onWalkCardClicked($event)">
+        <ion-card style="background-color: white; position: relative;" (click)="onWalkCardClicked($event)">
 
           <div class="loading-screen-walk" *ngIf="loadingWalk"></div>
 
@@ -34,21 +34,21 @@
                 <ion-card-subtitle>Walk</ion-card-subtitle>
               </ion-col>
               <ion-col size="3">
-                <ion-icon name="walk" class="card-icon" style="color: black;"></ion-icon>
+                <ion-icon name="walk" class="card-icon"></ion-icon>
               </ion-col>
             </ion-row>
           </ion-card-header>
 
-          <ion-card-content style="padding: 0px;">
+          <ion-card-content style="padding: 0px; position: unset">
               <ion-progress-bar value="{{currentSteps/10000}}" buffer="{{1 - currentSteps/10000}}" style="margin-top: 3vh;"></ion-progress-bar>
-              <div style="margin-top: 3vh; margin-bottom: 3vh;">
+              <div style="margin-top: 2vh; margin-bottom: 1vh;">
                 <h1> {{ currentSteps }} </h1>
                 <h5>Steps</h5>
               </div>
               <div class="update-time-walk">
-                <div>{{ lastUpdateSteps?.startTime }}</div>
-                <hr style="background-color: white; width: 65%;">
-                <div>{{ lastUpdateSteps?.endTime }}</div>
+                  <p>{{ lastUpdateSteps?.startTime }}</p>
+                  <hr style="background-color: white; width: 65%;">
+                  <p>{{ lastUpdateSteps?.endTime }}</p>
               </div>
           </ion-card-content>
 
@@ -87,7 +87,7 @@
 
     <ion-row>
       <ion-col>
-        <ion-card style="background-color: white;" (click)="onWorkoutCardClicked()">
+        <ion-card style="background-color: white; position: relative;" (click)="onWorkoutCardClicked()">
           <div class="loading-screen-workout" *ngIf="loadingWorkout"></div>
           <ion-card-header>
             <ion-row>
@@ -100,16 +100,16 @@
             </ion-row>
           </ion-card-header>
 
-          <ion-card-content style="position: relative; padding: 0px;">
+          <ion-card-content style="position: relative; padding: 0px; height: 100%;">
             <div class="workout-content-up">
               <div class="workout" style="margin-top: 3vh;">
-                <h1>{{ currentWorkout }}1551</h1>
+                <h1>{{ currentWorkout }}</h1>
                 <h5>Running steps</h5>
               </div>
             </div>
             <div class="workout-content-down">
                 <h5>Calories burnt</h5>
-                <h1>{{ workoutCalories }}252</h1>
+                <h1>{{ workoutCalories }}</h1>
             </div>
           </ion-card-content>
         </ion-card>
@@ -136,9 +136,7 @@
                 <h5>bpm</h5>
               </div>
             </div>
-            <div class="update-time-hr">
-              <div>{{ lastUpdateHR }}</div>
-            </div>
+            <p class="update-time-hr">{{ lastUpdateHR }}</p>
           </ion-card-content>
         </ion-card>
       </ion-col>

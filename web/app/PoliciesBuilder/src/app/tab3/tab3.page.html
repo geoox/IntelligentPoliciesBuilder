@@ -1,39 +1,45 @@
 <ion-content class="analytics">
   <ion-slides scrollbar="true" [options]="slideOpts">
     <ion-slide>
-      <ion-card class="carousel-card" style="background-color: #4286F4;" (click) = "getTotalPoints()">
+      <ion-card class="carousel-card" style="background-color: #273b7a;" (click) = "getTotalPoints()">
         <div class="loading-screen-points" *ngIf="loadingTotalPoints"></div>
-        <span><b>{{ totalPoints }}</b> <br> total points</span>
+        <span><h5><b>{{ totalPoints | thousandsSuffix : 2 }}</b></h5> Total Points</span>
+        <img src="../../assets/img/whistle.png" alt="whistle">
       </ion-card>
     </ion-slide>
     <ion-slide>
-      <ion-card class="carousel-card" style="background-color: #3F77D0;" (click) = "getTotalDistance()">
-        <div class="loading-screen-distance" *ngIf="loadingTotalDistance"></div>
-        <span><b>{{ totalDistance }}</b> <br> total distance</span>
-      </ion-card>
-    </ion-slide>
-    <ion-slide>
-      <ion-card class="carousel-card" style="background-color: #3D68AD;" (click) = "getTotalSteps()">
-        <div class="loading-screen-steps" *ngIf="loadingTotalSteps"></div>
-        <span><b>{{ totalSteps }}</b> <br> total steps</span>
-      </ion-card>
-    </ion-slide>
-    <ion-slide>
-      <ion-card class="carousel-card" style="background-color: #3B598A;" (click) = "getTotalSteps()">
+      <ion-card class="carousel-card" style="background-color: #273b7a;" (click) = "getTotalSteps()">
         <div class="loading-screen-workout" *ngIf="loadingTotalSteps"></div>
-        <span><b>{{ totalRunningSteps }}</b> <br> total running steps</span>
+        <span><h5><b>{{ totalRunningSteps | thousandsSuffix : 2 }}</b></h5> Total Running Steps</span>
+        <img src="../../assets/img/dumbbell.png" alt="gym-shoes">
       </ion-card>
     </ion-slide>
     <ion-slide>
-      <ion-card class="carousel-card" style="background-color: #e25822" (click) = "getTotalSteps()">
+      <ion-card class="carousel-card" style="background-color: #662b5a;" (click) = "getTotalSteps()">
+        <div class="loading-screen-steps" *ngIf="loadingTotalSteps"></div>
+        <span><h5><b>{{ totalSteps | thousandsSuffix : 2 }}</b></h5> Total Steps</span>
+        <img src="../../assets/img/gym-shoes.png" alt="trainers">
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card class="carousel-card" style="background-color: #c92f00;" (click) = "getTotalSteps()">
         <div class="loading-screen-calories" *ngIf="loadingTotalSteps"></div>
-        <span><b>{{ totalCalories }}</b> <br> total calories</span> 
+        <span><h5><b>{{ totalCalories | thousandsSuffix : 2 }}</b></h5> Total Workout Calories</span> 
+        <img src="../../assets/img/proteins.png" alt="proteins">
       </ion-card>
     </ion-slide>
     <ion-slide>
-      <ion-card class="carousel-card" style="background-color: #dd5152;" (click) = "getAverageHR()">
+      <ion-card class="carousel-card" style="background-color: #ff7f4f;" (click) = "getAverageHR()">
         <div class="loading-screen-hr" *ngIf="loadingHR"></div>
-        <span><b>{{ averageHR }}</b> <br> average heart rate</span> 
+        <span><h5><b>{{ averageHR }} bpm</b></h5> Average HR</span> 
+        <img src="../../assets/img/smartwatch.png" alt="smartwatch">
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card class="carousel-card" style="background-color: #ffedb5; color: #121149" (click) = "getTotalDistance()">
+        <div class="loading-screen-distance" *ngIf="loadingTotalDistance"></div>
+        <span><h5><b>{{ totalDistance | thousandsSuffix : 2 }}</b></h5> Total Distance</span>
+        <img src="../../assets/img/stopclock.png" alt="stopclock">
       </ion-card>
     </ion-slide>
   </ion-slides>
