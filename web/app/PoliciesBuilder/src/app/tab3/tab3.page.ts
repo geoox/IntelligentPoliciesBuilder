@@ -32,18 +32,22 @@ export class Tab3Page {
   averageHR;
   loadingHR;
 
+  last10HR;
+  last5Steps;
+
   constructor(){
     
   }
 
   ngOnInit(){
-    this.renderWeeklyChart();
     this.renderBudgetChart();
+
 
     this.getAverageHR();
     this.getTotalDistance();
     this.getTotalPoints();
     this.getTotalSteps();
+    this.getLast5Steps();
   }
 
   getTotalPoints(){
@@ -90,6 +94,19 @@ export class Tab3Page {
     });
   }
 
+  getLast5Steps(){
+    fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/last5Steps')
+    .then( (resp) => {
+      resp.json().then( (res) => {
+        this.last5Steps = res.reverse();
+        this.renderWeeklyChart();
+      });
+    })
+    .catch( (err) => {
+      console.log('GET last5Steps failed', err);
+    });
+  }
+
   getAverageHR(){
     this.loadingHR = true;
     fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/last10HR')
@@ -97,9 +114,13 @@ export class Tab3Page {
       resp.json().then( (heartRates) => {
         let heartRatesArr = [];
         heartRates.forEach(element => {
-          heartRatesArr.push(element.heartRate);
+          if (element.heartRate > 30){
+            heartRatesArr.push(element.heartRate);
+          }
         });
-        this.averageHR = heartRatesArr.reduce((a,b)=>a+b, 0) / heartRatesArr.length;
+        this.averageHR = (heartRatesArr.reduce((a,b)=>a+b, 0) / heartRatesArr.length).toFixed(2);
+        this.last10HR = heartRatesArr.reverse();
+        this.renderHRChart();
       });
       this.loadingHR = false;
     })
@@ -108,37 +129,33 @@ export class Tab3Page {
     });
   }
 
-  renderWeeklyChart(){
-    var ctx = (<HTMLCanvasElement> document.getElementById('weeklyActivityChart')).getContext("2d");
+
+  renderHRChart(){
+    var ctx = (<HTMLCanvasElement> document.getElementById('HRChart')).getContext("2d");
 
     var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#373B44");
-    gradientStroke.addColorStop(1, "#4286f4");
-
-    var gradientFill = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientFill.addColorStop(0, "#ffffff");
-    gradientFill.addColorStop(0.5, "#0b8793");
-    gradientFill.addColorStop(1, "#360033");
+    gradientStroke.addColorStop(0, "#ff7f4f");
+    gradientStroke.addColorStop(1, "#c92f00");
 
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            labels: ["HR 1", "HR 2", "HR 3", "HR 4", "HR 5", "HR 6", "HR 7", "HR 8", "HR 9", "HR 10", ""],
             datasets: [{
-                label: "Weekly Activity Level",
+                label: "HR - last recordings",
                 borderColor: gradientStroke,
                 pointBorderColor: gradientStroke,
                 pointBackgroundColor: gradientStroke,
                 pointHoverBackgroundColor: gradientStroke,
                 pointHoverBorderColor: gradientStroke,
-                pointBorderWidth: 12,
+                pointStyle: 'rect',
+                pointBorderWidth: 8,
                 pointHoverRadius: 12,
                 pointHoverBorderWidth: 3,
-                pointRadius: 3,
+                pointRadius: 5,
                 fill: false,
-                backgroundColor: gradientFill,
                 borderWidth: 2,
-                data: [100, 120, 150, 170, 180, 170, 160]
+                data: this.last10HR
             }]
         },
         options: {
@@ -149,24 +166,65 @@ export class Tab3Page {
                 position: "top"
             },
             scales: {
-                yAxes: [{
-                    ticks: {
-                        display: false
-                    },
-                    gridLines: {
-                        drawTicks: false,
-                        display: false
-                    }
-
-                }],
                 xAxes: [{
                     gridLines: {
-                        zeroLineColor: "transparent"
+                        zeroLineColor: "transparent",
+                        display: false
                     },
                     ticks: {
-                        padding: 20,
-                        fontColor: "rgba(0,0,0,0.5)",
-                        fontStyle: "bold"
+                        display: false
+                    }
+                }]
+            }
+        }
+    });
+  }
+
+  renderWeeklyChart(){
+    var ctx = (<HTMLCanvasElement> document.getElementById('weeklyActivityChart')).getContext("2d");
+
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#373B44");
+    gradientStroke.addColorStop(1, "#4286f4");
+
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", ""],
+            datasets: [{
+                label: "Steps - last 5 days",
+                borderColor: gradientStroke,
+                pointBorderColor: gradientStroke,
+                pointBackgroundColor: gradientStroke,
+                pointHoverBackgroundColor: gradientStroke,
+                pointHoverBorderColor: gradientStroke,
+                pointBorderWidth: 12,
+                pointHoverRadius: 12,
+                pointHoverBorderWidth: 3,
+                pointRadius: 3,
+                fill: false,
+                borderWidth: 2,
+                data: this.last5Steps
+            }]
+        },
+        options: {
+            animation: {
+                easing: "easeInOutBack"
+            },
+            legend: {
+                position: "top"
+            },
+            scales: {
+                yAxes: [
+
+                ],
+                xAxes: [{
+                    gridLines: {
+                        zeroLineColor: "transparent",
+                        display: false
+                    },
+                    ticks: {
+                        display: false
                     }
                 }]
             }
@@ -184,7 +242,7 @@ export class Tab3Page {
             label: "Projected expenditure",
             type: "line",
             borderColor: "#8e5ea2",
-            data: [125,250,375,500],
+            data: [150,300,450,600],
             fill: false,
             pointBorderWidth: 12,
             pointHoverRadius: 12,
@@ -194,7 +252,7 @@ export class Tab3Page {
             label: "Projected saving",
             type: "line",
             borderColor: "#3e95cd",
-            data: [125,230,320,400],
+            data: [150,230,320,400],
             fill: false,
             pointBorderWidth: 12,
             pointHoverRadius: 12,

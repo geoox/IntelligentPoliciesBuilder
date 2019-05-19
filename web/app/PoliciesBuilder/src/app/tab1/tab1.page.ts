@@ -166,7 +166,7 @@ export class Tab1Page {
     fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/currentPoints')
     .then( (resp) => {
       resp.json().then( (pointsResp) => {
-        this.currentPoints = pointsResp;
+        this.currentPoints = Math.round(pointsResp);
       });
       this.loadingPoints = false;
     })
