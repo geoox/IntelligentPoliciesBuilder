@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as moment from 'moment'
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-tab1',
@@ -37,7 +37,8 @@ export class Tab1Page {
     this.todayMonth = moment().format('DD MMMM');
   }
 
-  ngOnInit(){
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngOnInit() {
     this.loadingDistance = true;
     this.loadingHR = true;
     this.loadingWalk = true;
@@ -69,14 +70,14 @@ export class Tab1Page {
     }, 4000);
   }
 
-  getLatestSteps(){
+  getLatestSteps() {
     fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/latestSteps')
     .then( (resp) => {
       resp.json().then( (formattedSteps) => {
         this.currentSteps = formattedSteps.walkStepCount;
-        this.lastUpdateSteps={};
-        this.lastUpdateSteps['startTime'] = moment.unix(formattedSteps.startTime).format("MMMM Do, HH:mm");
-        this.lastUpdateSteps['endTime'] =  moment.unix(formattedSteps.endTime).format("MMMM Do, HH:mm");
+        this.lastUpdateSteps = {};
+        this.lastUpdateSteps['startTime'] = moment.unix(formattedSteps.startTime).format('MMMM Do, HH:mm');
+        this.lastUpdateSteps['endTime'] =  moment.unix(formattedSteps.endTime).format('MMMM Do, HH:mm');
       });
       this.loadingWalk = false;
     })
@@ -96,8 +97,8 @@ export class Tab1Page {
       resp.json().then( (formattedDistance) => {
         this.currentDistance = formattedDistance.distance;
         this.lastUpdateDistance = {};
-        this.lastUpdateDistance['startTime'] = moment.unix(formattedDistance.startTime/1000).format("MMMM Do, HH:mm");
-        this.lastUpdateDistance['endTime'] =  moment.unix(formattedDistance.endTime/1000).format("MMMM Do, HH:mm");
+        this.lastUpdateDistance['startTime'] = moment.unix(formattedDistance.startTime / 1000).format('MMMM Do, HH:mm');
+        this.lastUpdateDistance['endTime'] =  moment.unix(formattedDistance.endTime / 1000).format('MMMM Do, HH:mm');
       });
       this.loadingDistance = false;
     })
@@ -113,19 +114,19 @@ export class Tab1Page {
     this.getLatestDistance();
   }
 
-  getLatestWorkout(){
+  getLatestWorkout() {
     fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/latestWorkout')
     .then( (resp) => {
       resp.json().then( (formattedWorkout) => {
         if (formattedWorkout.error) {
-          this.currentWorkout = 'N/A'
+          this.currentWorkout = 'N/A';
           this.workoutCalories = 'N/A';
         } else {
           this.currentWorkout = formattedWorkout.runStepCount;
           this.workoutCalories = formattedWorkout.calories;
           this.lastUpdateWorkout = {};
-          this.lastUpdateWorkout['startTime'] = moment.unix(formattedWorkout.startTime/1000).format("MMMM Do, HH:mm");
-          this.lastUpdateWorkout['endTime'] =  moment.unix(formattedWorkout.endTime/1000).format("MMMM Do, HH:mm");
+          this.lastUpdateWorkout['startTime'] = moment.unix(formattedWorkout.startTime / 1000).format('MMMM Do, HH:mm');
+          this.lastUpdateWorkout['endTime'] =  moment.unix(formattedWorkout.endTime / 1000).format('MMMM Do, HH:mm');
         }
       });
       this.loadingWorkout = false;
@@ -141,12 +142,12 @@ export class Tab1Page {
     this.getLatestWorkout();
   }
 
-  getLatestHR(){
+  getLatestHR() {
     fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/latestHR')
     .then( (resp) => {
       resp.json().then( (formattedHR) => {
         this.currentHR = formattedHR.heartRate;
-        this.lastUpdateHR = moment.unix((formattedHR.date/1000)).format("MMMM Do, HH:mm");
+        this.lastUpdateHR = moment.unix((formattedHR.date / 1000)).format('MMMM Do, HH:mm');
       });
       this.loadingHR = false;
     })
@@ -162,7 +163,7 @@ export class Tab1Page {
     this.getLatestHR();
   }
 
-  getCurrentPoints(){
+  getCurrentPoints() {
     fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/currentPoints')
     .then( (resp) => {
       resp.json().then( (pointsResp) => {

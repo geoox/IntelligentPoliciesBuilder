@@ -19,7 +19,7 @@ export class FirstUsePage implements OnInit {
   ngOnInit() {
   }
 
-  onNameChange(event): void{
+  onNameChange(event): void {
     console.log(event.target.value);
     this.userName = event.target.value;
   }

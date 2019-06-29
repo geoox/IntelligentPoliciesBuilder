@@ -1,0 +1,29 @@
+.login-page{ 
+    --background: linear-gradient(to top, #ffffff, #f4f4f6, #e8e9ee, #dbdfe5, #cdd5dc);
+    ion-slide{
+        height: 80vh;
+        display: block;
+
+        h3{
+            text-align: left;
+            margin-left: 3vw;
+        }
+    }
+    ion-card{
+        ion-card-content{
+            padding-bottom: 10vh;
+            background-color: white;
+        }
+    }
+
+    .login-btn{
+        margin-top: 5vh;
+    }
+
+    // .login-img{
+    //     width: 77%;
+    //     margin-bottom: 10vh;
+    //     margin-top: 5vh;
+    // }
+
+}

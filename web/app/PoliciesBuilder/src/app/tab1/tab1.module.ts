@@ -17,8 +17,8 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
       radius: 100,
       outerStrokeWidth: 16,
       innerStrokeWidth: 8,
-      outerStrokeColor: "#78C000",
-      innerStrokeColor: "#C7E596",
+      outerStrokeColor: '#78C000',
+      innerStrokeColor: '#C7E596',
       animationDuration: 300,
       percent: 20
     })
