@@ -20,10 +20,21 @@
         margin-top: 5vh;
     }
 
-    // .login-img{
-    //     width: 77%;
-    //     margin-bottom: 10vh;
-    //     margin-top: 5vh;
-    // }
+    .login-card-img{
+        margin: auto;
+    }
 
+    ion-slides {
+        --bullet-background: #737373;
+        --bullet-background-active: black;
+    }
+
+    .login-card{
+        background-color: #66cdcc;
+        height: 60vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
 }
