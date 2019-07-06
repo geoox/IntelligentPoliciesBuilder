@@ -7,6 +7,12 @@ const userSchema = mongoose.Schema({
     email: String,
     height: Number,
     weight: Number,
+    heartRates: [
+      {
+        // date: Date,
+        // heartRate: Number
+      }
+    ],
     gender: {
       type: String,
       enum: ['Male', 'Female']
@@ -25,10 +31,10 @@ const userSchema = mongoose.Schema({
         // totalTime: Number
       }
     ],
-    sleep:[
+    distance:[
       {
         // timestamp: Date,
-        // totalTime: Number
+        // distance: Number
       }
     ],
     achievements:[
@@ -62,6 +68,7 @@ module.exports = mongoose.model('User', userSchema);
       "height":"",
       "weight":"",
       "gender":"",
+      "heartRate":[],
       "steps":[
         {
           "date":"",
