@@ -20,7 +20,7 @@
       </ion-card>
     </ion-slide>
     <ion-slide>
-      <h3>Login</h3>
+      <h3></h3>
       <ion-card>
         <img class="login-img" src="../../assets/img/inFit-white.png" alt="inFit-logo">
         <ion-card-content style="background-color: white;">
@@ -41,4 +41,5 @@
 
   <ion-button expand="block" color="primary" class="login-btn" *ngIf = "isLastPage" (click)="onLoginClicked();">LOGIN</ion-button>
   <ion-button expand="block" color="dark" class="login-btn" *ngIf = "!isLastPage" (click)="onNextClicked();">Next</ion-button>
+  <ion-button expand="block" color="dark" style="margin-top: 2vh;" *ngIf = "isLastPage" (click)="onRegisterClicked();">Register</ion-button>
 </ion-content>

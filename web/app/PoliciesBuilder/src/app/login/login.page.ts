@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core'; 
-import { Slides } from 'ionic-angular';
+import { Slides, NavController } from 'ionic-angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginPage implements OnInit {
     speed: 400
   };
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -39,6 +40,10 @@ export class LoginPage implements OnInit {
 
   onLoginClicked() {
     console.log('login clicked')
+  }
+
+  onRegisterClicked() {
+    this.router.navigateByUrl('/register');
   }
 
 }
