@@ -21,7 +21,7 @@
         </div>
         <div class="gender-list">
           <ion-list>
-            <ion-radio-group>
+            <ion-radio-group (ionChange)="onGenderChange($event)">
               <ion-list-header>
                 <ion-label>Gender</ion-label>
               </ion-list-header>
@@ -51,7 +51,7 @@
           <div class="input-label">
               <ion-item>
                 <ion-label>birth date</ion-label>
-                <ion-datetime display-format="DDDD MMM D, YYYY" min="1910"></ion-datetime>
+                <ion-datetime display-format="DDDD MMM D, YYYY" min="1910" (ionChange)="onBirthdayChange($event)"></ion-datetime>
               </ion-item>
           </div>
       </ion-slide>
@@ -66,13 +66,13 @@
         <div class="input-label">
           <ion-item>
             <ion-label position="floating">height (cm)</ion-label>
-            <ion-input></ion-input>
+            <ion-input (ionChange)="onHeightChange($event)"></ion-input>
           </ion-item>
         </div>
         <div class="input-label">
           <ion-item>
             <ion-label position="floating">weight (kg)</ion-label>
-            <ion-input></ion-input>
+            <ion-input (ionChange)="onWeightChange($event)"></ion-input>
           </ion-item>
         </div>
     </ion-slide>
@@ -86,24 +86,24 @@
         <div class="input-label">
           <ion-item>
             <ion-label position="floating">monthly subscription cost ($)</ion-label>
-            <ion-input></ion-input>
+            <ion-input (ionChange)="onSubscriptionChange($event)"></ion-input>
           </ion-item>
         </div>
         <div class="insurance-start">
             <ion-item>
               <ion-label>insurance start date</ion-label>
-              <ion-datetime display-format="DDDD MMM D, YYYY" min="2000"></ion-datetime>
+              <ion-datetime display-format="DDDD MMM D, YYYY" min="2000" (ionChange)="onStartChange($event)"></ion-datetime>
             </ion-item>
         </div>
         <div class="insurance-end">
           <ion-item>
             <ion-label>insurance end date</ion-label>
-            <ion-datetime display-format="DDDD MMM D, YYYY" min="2019" max="2030"></ion-datetime>
+            <ion-datetime display-format="DDDD MMM D, YYYY" min="2019" max="2030" (ionChange)="onEndChange($event)"></ion-datetime>
           </ion-item>
       </div>
 
-      <ion-button style="margin-top: 5vh;">
-          <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
+      <ion-button style="margin-top: 5vh;" (click)="onReadyPressed()">
+        <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
         Ready !
       </ion-button>
     </ion-slide>

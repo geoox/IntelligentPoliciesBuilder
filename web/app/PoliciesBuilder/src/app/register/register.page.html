@@ -10,11 +10,11 @@
 <ion-content>
   <ion-item>
     <ion-label position="floating">Username</ion-label>
-    <ion-input></ion-input>
+    <ion-input (ionChange)="onUserChanged($event)"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Password</ion-label>
-    <ion-input type="password"></ion-input>
+    <ion-input type="password" (ionChange)="onPasswordChanged($event)"></ion-input>
   </ion-item>
   <ion-button expand="block" color="dark" style="margin-top: 2vh;" (click)="onRegisterClicked();">Register</ion-button>
 </ion-content>
