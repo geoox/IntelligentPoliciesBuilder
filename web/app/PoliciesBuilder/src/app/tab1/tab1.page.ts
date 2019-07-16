@@ -7,6 +7,9 @@ import * as moment from 'moment';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+
+  user_id;
+
   todayDay: any;
   todayMonth: any;
 
@@ -35,6 +38,7 @@ export class Tab1Page {
   constructor() {
     this.todayDay = moment().format('dddd');
     this.todayMonth = moment().format('DD MMMM');
+    this.user_id = localStorage.getItem('user_id');
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -67,18 +71,22 @@ export class Tab1Page {
       this.loadingWorkout = false;
       console.log('Refresh completed!');
       event.target.complete();
-    }, 4000);
+    }, 3000);
   }
 
   getLatestSteps() {
-    fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/latestSteps')
+    fetch('https://in-fit.herokuapp.com/users/' + this.user_id + '/latestSteps')
     .then( (resp) => {
-      resp.json().then( (formattedSteps) => {
-        this.currentSteps = formattedSteps.walkStepCount;
-        this.lastUpdateSteps = {};
-        this.lastUpdateSteps['startTime'] = moment.unix(formattedSteps.startTime).format('MMMM Do, HH:mm');
-        this.lastUpdateSteps['endTime'] =  moment.unix(formattedSteps.endTime).format('MMMM Do, HH:mm');
-      });
+      if (resp.status == 404) {
+        this.currentSteps = 'N/A';
+      } else {
+        resp.json().then( (formattedSteps) => {
+          this.currentSteps = formattedSteps.walkStepCount;
+          this.lastUpdateSteps = {};
+          this.lastUpdateSteps['startTime'] = moment.unix(formattedSteps.startTime).format('MMMM Do, HH:mm');
+          this.lastUpdateSteps['endTime'] =  moment.unix(formattedSteps.endTime).format('MMMM Do, HH:mm');
+        });
+      }
       this.loadingWalk = false;
     })
     .catch( (err) => {
@@ -92,14 +100,19 @@ export class Tab1Page {
   }
 
   getLatestDistance() {
-    fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/latestDistance')
+    fetch('https://in-fit.herokuapp.com/users/' + this.user_id + '/latestDistance')
     .then( (resp) => {
-      resp.json().then( (formattedDistance) => {
-        this.currentDistance = formattedDistance.distance;
-        this.lastUpdateDistance = {};
-        this.lastUpdateDistance['startTime'] = moment.unix(formattedDistance.startTime / 1000).format('MMMM Do, HH:mm');
-        this.lastUpdateDistance['endTime'] =  moment.unix(formattedDistance.endTime / 1000).format('MMMM Do, HH:mm');
-      });
+      if (resp.status == 404) {
+        this.currentDistance = 'N/A';
+      } else {
+        resp.json().then( (formattedDistance) => {
+          this.currentDistance = formattedDistance.distance;
+          this.lastUpdateDistance = {};
+          this.lastUpdateDistance['startTime'] = moment.unix(formattedDistance.startTime / 1000).format('MMMM Do, HH:mm');
+          this.lastUpdateDistance['endTime'] =  moment.unix(formattedDistance.endTime / 1000).format('MMMM Do, HH:mm');
+        });
+      }
+
       this.loadingDistance = false;
     })
     .catch( (err) => {
@@ -115,20 +128,26 @@ export class Tab1Page {
   }
 
   getLatestWorkout() {
-    fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/latestWorkout')
+    fetch('https://in-fit.herokuapp.com/users/' + this.user_id + '/latestWorkout')
     .then( (resp) => {
-      resp.json().then( (formattedWorkout) => {
-        if (formattedWorkout.error) {
-          this.currentWorkout = 'N/A';
-          this.workoutCalories = 'N/A';
-        } else {
-          this.currentWorkout = formattedWorkout.runStepCount;
-          this.workoutCalories = formattedWorkout.calories;
-          this.lastUpdateWorkout = {};
-          this.lastUpdateWorkout['startTime'] = moment.unix(formattedWorkout.startTime / 1000).format('MMMM Do, HH:mm');
-          this.lastUpdateWorkout['endTime'] =  moment.unix(formattedWorkout.endTime / 1000).format('MMMM Do, HH:mm');
-        }
-      });
+      if (resp.status == 404) {
+        this.currentWorkout = 'N/A';
+        this.workoutCalories = 'N/A';
+      } else {
+        resp.json().then( (formattedWorkout) => {
+          if (formattedWorkout.error) {
+            this.currentWorkout = 'N/A';
+            this.workoutCalories = 'N/A';
+          } else {
+            this.currentWorkout = formattedWorkout.runStepCount;
+            this.workoutCalories = formattedWorkout.calories;
+            this.lastUpdateWorkout = {};
+            this.lastUpdateWorkout['startTime'] = moment.unix(formattedWorkout.startTime / 1000).format('MMMM Do, HH:mm');
+            this.lastUpdateWorkout['endTime'] =  moment.unix(formattedWorkout.endTime / 1000).format('MMMM Do, HH:mm');
+          }
+        });
+      }
+
       this.loadingWorkout = false;
     })
     .catch( (err) => {
@@ -143,12 +162,12 @@ export class Tab1Page {
   }
 
   getLatestHR() {
-    fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/latestHR')
+    fetch('https://in-fit.herokuapp.com/users/' + this.user_id + '/latestHR')
     .then( (resp) => {
-      resp.json().then( (formattedHR) => {
-        this.currentHR = formattedHR.heartRate;
-        this.lastUpdateHR = moment.unix((formattedHR.date / 1000)).format('MMMM Do, HH:mm');
-      });
+        resp.json().then( (formattedHR) => {
+            this.currentHR = formattedHR.heartRate;
+            this.lastUpdateHR = moment.unix((formattedHR.date / 1000)).format('MMMM Do, HH:mm');  
+        });
       this.loadingHR = false;
     })
     .catch( (err) => {
@@ -158,17 +177,22 @@ export class Tab1Page {
   }
 
   onHRCardClicked($event) {
-    console.log('distance card clicked!');
+    console.log('HR card clicked!');
     this.loadingHR = true;
     this.getLatestHR();
   }
 
   getCurrentPoints() {
-    fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/currentPoints')
+    fetch('https://in-fit.herokuapp.com/users/' + this.user_id + '/currentPoints')
     .then( (resp) => {
-      resp.json().then( (pointsResp) => {
-        this.currentPoints = Math.round(pointsResp);
-      });
+      if (resp.status == 404) {
+        this.currentPoints = 'N/A';
+      } else {
+        resp.json().then( (pointsResp) => {
+          this.currentPoints = Math.round(pointsResp);
+        });
+      }
+
       this.loadingPoints = false;
     })
     .catch( (err) => {

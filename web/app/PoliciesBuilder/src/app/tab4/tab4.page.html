@@ -1,15 +1,12 @@
 <ion-content class="profile">
   <div class="profile-header">
     <ion-card>
-      <ion-card-content>
+      <ion-card-content style="background-image: url('../../assets/img/watch.gif'); background-size: cover;">
         <div class="profile-avatar">
-          <ion-avatar>
-            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-          </ion-avatar>
           <h1>{{ userName }}</h1>
         </div>
         <div class="profile-info">
-          <ion-row>
+          <ion-row style="color: black;">
             <ion-col size="4" style="border-right: 1px solid black;">
               <p class="info-bold">{{ age }}</p>
               <p>Years</p>
@@ -32,22 +29,19 @@
   <div class="profile-list">
     <ion-card>
       <ion-list style="padding: 15px; width: 90vw;">
-          <ion-item>
-            <ion-label>Edit user details</ion-label>
+          <ion-item (click) = "onUserDetailsTapped()">
+            <ion-label>User details</ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item (click) = "onInsuranceDetailsTapped()">
             <ion-label>Insurance details</ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item (click) = "onFAQTapped()">
             <ion-label>FAQs</ion-label>
           </ion-item>
-          <ion-item>
-            <ion-label>Contact</ion-label>
+          <ion-item (click) = "onWearableTapped()">
+            <ion-label>Pair wearable device</ion-label>
           </ion-item>
-          <ion-item>
-            <ion-label>About</ion-label>
-          </ion-item>
-          <ion-item>
+          <ion-item (click) = "onLogoutTapped()">
             <ion-label>Log out</ion-label>
           </ion-item>
       </ion-list>

@@ -46,6 +46,18 @@ router.get('/:userId', (req, res, next) => {
     })
 });
 
+router.get('/:userId/watchPin', (req, res, next) => {
+    const id = req.params.userId;
+    User.findById(id).then(doc => {
+        console.log(doc);
+        res.status(200).json(doc.watchPin);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error: err});
+    })
+});
+
 router.get('/:userId/latestHR', (req, res, next) => {
     const id = req.params.userId;
     User.findById(id).then(user => {

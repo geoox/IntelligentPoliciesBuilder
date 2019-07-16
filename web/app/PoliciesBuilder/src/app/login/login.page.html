@@ -26,11 +26,11 @@
         <ion-card-content style="background-color: white;">
             <ion-item>
               <ion-label position="floating">Username</ion-label>
-              <ion-input></ion-input>
+              <ion-input (ionChange)="onUserChanged($event)"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Password</ion-label>
-              <ion-input type="password"></ion-input>
+              <ion-input (ionChange)="onPasswordChanged($event)" type="password"></ion-input>
             </ion-item>
         </ion-card-content>
       </ion-card>

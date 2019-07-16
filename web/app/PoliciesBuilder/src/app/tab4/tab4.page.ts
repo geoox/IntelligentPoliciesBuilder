@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment'
+import { Router } from '../../../node_modules/@angular/router';
+import { ModalController } from '../../../node_modules/@ionic/angular';
 
 @Component({
   selector: 'app-tab4',
@@ -8,11 +10,14 @@ import * as moment from 'moment'
 })
 export class Tab4Page implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router, public modalController: ModalController) { }
 
   ngOnInit() {
+    this.user_id = localStorage.getItem('user_id');
     this.getUser();
   }
+
+  user_id;
 
   userName;
   age;
@@ -22,7 +27,7 @@ export class Tab4Page implements OnInit {
   insurancePlan;
 
   getUser(){
-    fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/')
+    fetch('https://in-fit.herokuapp.com/users/' + this.user_id)
     .then( (resp) => {
       resp.json().then( (userInfo) => {
         this.userName = userInfo.name;
@@ -36,6 +41,26 @@ export class Tab4Page implements OnInit {
     .catch( (err) => {
       console.log('GET user failed', err);
     });
+  }
+
+  onLogoutTapped() {
+    this.router.navigateByUrl('/');
+  }
+
+  async onUserDetailsTapped() {
+    this.router.navigateByUrl('/user/profile/user-details');
+  }
+
+  onInsuranceDetailsTapped() {
+    this.router.navigateByUrl('/user/profile/insurance-details');
+  }
+
+  onFAQTapped() {
+    this.router.navigateByUrl('/user/profile/faq');
+  }
+
+  onWearableTapped() {
+    this.router.navigateByUrl('/user/profile/pair-watch');
   }
 
 }

@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Insurance Details</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button routerLink="/user/profile" routerDirection="back"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content style="--background: linear-gradient(to top, #ffffff, #f4f4f6, #e8e9ee, #dbdfe5, #cdd5dc);">
+  
+      <ion-card class="carousel-card" style="background-color: #121149;">
+        <div class="loading-screen" *ngIf="loading"></div>
+        <div class="insurance-details">
+            <br>
+            <div>Monthly subscription fee: {{ subscriptionFee }}</div>
+            <div>Subscription start date: {{ startDate }}</div>
+            <div>Subscription end date: {{ endDate }}</div>
+            <br>
+        </div>
+  
+        <img src="../../assets/img/cardiogram.png" alt="gym-shoes" style="width: 50%; margin: auto;">
+        <br>
+      </ion-card>
+  
+  </ion-content>
