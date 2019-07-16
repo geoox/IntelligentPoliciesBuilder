@@ -3,8 +3,11 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
+const app = express();
 
 const User = require('../models/user');
+app.use(cors());
 
 // Handle incoming GET requests to /users
 router.get('/', (req, res, next) => {
@@ -17,6 +20,18 @@ router.get('/', (req, res, next) => {
             error: err
         });
     });
+});
+
+router.get('/:userId/watchPin', (req, res, next) => {
+    const id = req.params.userId;
+    User.findById(id).then(doc => {
+        console.log(doc);
+        res.status(200).json(doc.watchPin);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error: err});
+    })
 });
 
 router.get('/:userId', (req, res, next) => {
@@ -65,7 +80,9 @@ router.get('/:userId/last5Steps', (req, res, next) => {
         let c = 0;
         let stepsArray = [];
         while (c < 5) {
-            stepsArray.push(user.steps[user.steps.length-(c+1)]['walkStepCount']);
+            if (user.steps[user.steps.length-(c+1)] !== undefined) {
+                stepsArray.push(user.steps[user.steps.length-(c+1)]['walkStepCount']);
+            }
             c++;
         }
         res.status(200).json(stepsArray);
@@ -287,9 +304,9 @@ router.patch('/:userId/patchSteps', (req, res, next) => {
     const pushOps = {};
     
     User.findById(id).then(user => {
-        const latestStepsStartTime = user.steps[user.steps.length-1]['startTime'];
+        const latestStepsStartTime = user.steps.length > 0 ? user.steps[user.steps.length-1]['startTime'] : 0;
         const newStepsStartTime = req.body.startTime;
-        const currentPoints = user.currentPoints;
+        const currentPoints = user.currentPoints ? user.currentPoints : 0;
 
         if (latestStepsStartTime === newStepsStartTime) {
             // remove the last entry and put the newest one
@@ -300,6 +317,7 @@ router.patch('/:userId/patchSteps', (req, res, next) => {
                     User.update({ _id: id }, { $push: pushOps }).then(
                         result => {
                             console.log(result);
+                            res.status(200).json(result);
                         })
                         .catch( err => {
                             console.log(err);
@@ -369,6 +387,7 @@ router.patch('/:userId/patchWorkout', (req, res, next) => {
                     User.update({ _id: id }, { $push: pushOps }).then(
                         result => {
                             console.log(result);
+                            res.status(200).json(result);
                         })
                         .catch( err => {
                             console.log(err);
@@ -492,7 +511,8 @@ router.post('/', (req, res, next) => {
         achievements: req.body.achievements,
         currentPoints: req.body.currentPoints,
         historyPoints: req.body.historyPoints,
-        insurancePlan: req.body.insurancePlan
+        insurancePlan: req.body.insurancePlan,
+        watchPin: Math.random().toString().substr(2,4)
     });
     newObj.save().then(result=>{
         console.log(result);
@@ -567,8 +587,9 @@ router.post('/signup', function(req, res) {
                   expiresIn: '2h'
                 });
                 return res.status(200).json({
-                  success: 'Welcome to the JWT Auth',
-                  token: JWTToken
+                  message: 'Authentication successful',
+                  token: JWTToken,
+                  user_id: user._id
                 });
            }
           return res.status(401).json({

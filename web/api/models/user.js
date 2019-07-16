@@ -8,6 +8,7 @@ const userSchema = mongoose.Schema({
     password: String,
     height: Number,
     weight: Number,
+    watchPin: Number,
     heartRates: [
       {
         // date: Date,
