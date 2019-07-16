@@ -31,6 +31,18 @@ router.get('/:userId', (req, res, next) => {
     })
 });
 
+router.get('/:userId/watchPin', (req, res, next) => {
+    const id = req.params.userId;
+    User.findById(id).then(doc => {
+        console.log(doc);
+        res.status(200).json(doc.watchPin);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error: err});
+    })
+});
+
 router.get('/:userId/latestHR', (req, res, next) => {
     const id = req.params.userId;
     User.findById(id).then(user => {
@@ -492,7 +504,8 @@ router.post('/', (req, res, next) => {
         achievements: req.body.achievements,
         currentPoints: req.body.currentPoints,
         historyPoints: req.body.historyPoints,
-        insurancePlan: req.body.insurancePlan
+        insurancePlan: req.body.insurancePlan,
+        watchPin: Math.random().toString().substr(2,4)
     });
     newObj.save().then(result=>{
         console.log(result);
