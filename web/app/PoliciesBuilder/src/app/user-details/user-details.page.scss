@@ -1,0 +1,25 @@
+.loading{
+    background: url('../../assets/gif/sport-6.gif');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+}
+
+.personal-details {
+    text-align: center;
+    color:white;
+    line-height: 200%;
+    font-size: 120%; 
+}
+
+.background-blue {
+    background-color: #121149;
+}
+
+.background-yellow {
+    background-color: #d48b08;
+}

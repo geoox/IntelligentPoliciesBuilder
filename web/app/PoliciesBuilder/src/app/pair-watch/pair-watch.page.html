@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Pair Wearable Device</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button routerLink="/user/profile" routerDirection="back"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content style="--background: linear-gradient(to top, #ffffff, #f4f4f6, #e8e9ee, #dbdfe5, #cdd5dc);">
+  
+      <ion-card class="carousel-card" style="background-color: #d35933;">
+        <div class="loading-screen" *ngIf="loading"></div>
+        
+  
+        <img src="../../assets/img/smartwatch.png" alt="gym-shoes" style="width: 50%; margin: auto;">
+      </ion-card>
+  
+  </ion-content>

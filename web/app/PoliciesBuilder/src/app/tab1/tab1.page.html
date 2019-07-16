@@ -12,11 +12,6 @@
         </p>
         <!-- <p><strong>Week 10</strong></p> -->
       </ion-col>
-      <ion-col size="3" class="dashboard-avatar">
-        <ion-avatar class="ion-float-right">
-          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-        </ion-avatar>
-      </ion-col>
     </ion-row>
   </div>
 
@@ -156,12 +151,12 @@
               </ion-col>
             </ion-row>
           </ion-card-header>
-          <ion-card-content>
+          <ion-card-content style="margin-top: 2vh;">
             <h1>{{ currentPoints }}</h1>
-            <h2 style="margin-top: 3vh;" *ngIf = "currentPoints < 100">You can do more!</h2>
-            <h2 style="margin-top: 3vh;" *ngIf = "currentPoints >= 100 && currentPoints < 250">Keep going!</h2>
-            <h2 style="margin-top: 3vh;" *ngIf = "currentPoints >= 250 && currentPoints < 500">Well done! Now outclass yourself</h2>
-            <h2 style="margin-top: 3vh;" *ngIf = "currentPoints >= 500 && currentPoints < 1000">You are unstoppable!</h2>
+            <h2 style="margin-top: 3vh;" *ngIf = "currentPoints < 200">Always remember: You can do more!</h2>
+            <h2 style="margin-top: 3vh;" *ngIf = "currentPoints >= 200 && currentPoints < 700">You are on the going to conquer the world! Keep going!</h2>
+            <h2 style="margin-top: 3vh;" *ngIf = "currentPoints >= 700 && currentPoints < 1500">Well done! Now outclass yourself</h2>
+            <h2 style="margin-top: 3vh;" *ngIf = "currentPoints >= 1500">You are unstoppable! A fitness monster!</h2>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -178,11 +173,9 @@
               </ion-col>
             </ion-row>
           </ion-card-header>
-          <ion-card-content>
-            <h1>3</h1>
+          <ion-card-content style="margin-top: 5vh;">
+            <h1>0</h1>
             <h3>Achievements</h3>
-            <h1 style="margin-top: 1vh; color: green;">$501</h1>
-            <h3>Earned</h3>
           </ion-card-content>
         </ion-card>
       </ion-col>

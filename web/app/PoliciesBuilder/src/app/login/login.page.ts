@@ -3,6 +3,7 @@ import { ViewChild } from '@angular/core';
 import { Slides, NavController } from 'ionic-angular';
 import { Router } from '@angular/router';
 import { AlertServiceService } from '../alert-service.service';
+import { LoaderServiceService } from '../loader-service.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginPage implements OnInit {
     speed: 400
   };
 
-  constructor(private router: Router, private alert: AlertServiceService) { }
+  constructor(private router: Router, private alert: AlertServiceService, private loader: LoaderServiceService) { }
 
   ngOnInit() {
   }
@@ -41,6 +42,9 @@ export class LoginPage implements OnInit {
   }
 
   async onLoginClicked() {
+
+    this.loader.present();
+
     const postObj = {
       'email': this.user,
       'password': this.password
@@ -56,15 +60,18 @@ export class LoginPage implements OnInit {
     })
     .then(res => res.json())
     .then(response => {
-      if (!response.error) {
+      this.loader.dismiss();
+      if (!response.error && !response.failed) {
         console.log('Success:', response);
         localStorage.setItem('user_id', response.user_id);
         fetch('https://in-fit.herokuapp.com/users/' + response.user_id)
         .then(resp => resp.json())
         .then( user => {
           console.log('fetched user', user);
+          this.user = '';
+          this.password = '';
           if (user['birthDate']) {
-            this.router.navigateByUrl('/user/');
+            this.router.navigateByUrl('/user');
           } else {
             this.router.navigateByUrl('/first-use');
           }
@@ -74,7 +81,11 @@ export class LoginPage implements OnInit {
       }
 
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => {
+      console.error('Error:', error);
+      this.loader.dismiss();
+    }
+    );
   }
 
   onUserChanged(event) {

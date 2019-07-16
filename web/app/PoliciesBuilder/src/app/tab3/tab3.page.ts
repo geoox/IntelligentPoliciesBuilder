@@ -16,6 +16,8 @@ export class Tab3Page {
     spaceBetween: 30
   };
 
+  user_id;
+
   totalPoints;
   loadingTotalPoints;
 
@@ -35,27 +37,30 @@ export class Tab3Page {
   last10HR;
   last5Steps;
 
+  subscriptionFee;
+
   constructor(){
     
   }
 
   ngOnInit(){
-    this.renderBudgetChart();
 
-
+    this.user_id = localStorage.getItem('user_id');
+    this.loadingTotalPoints = true;
     this.getAverageHR();
     this.getTotalDistance();
     this.getTotalPoints();
     this.getTotalSteps();
     this.getLast5Steps();
+    this.getSubscriptionInfo();
   }
 
   getTotalPoints(){
     this.loadingTotalPoints = true;
-    fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/totalPoints')
+    fetch('https://in-fit.herokuapp.com/users/' + this.user_id + '/totalPoints')
     .then( (resp) => {
       resp.json().then( (totalPoints) => {
-        this.totalPoints = totalPoints.totalPoints;
+        this.totalPoints = totalPoints.totalPoints.toFixed(0);
       });
       this.loadingTotalPoints = false;
     })
@@ -66,7 +71,7 @@ export class Tab3Page {
 
   getTotalSteps(){
     this.loadingTotalSteps = true;
-    fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/totalSteps')
+    fetch('https://in-fit.herokuapp.com/users/' + this.user_id + '/totalSteps')
     .then( (resp) => {
       resp.json().then( (stepsResp) => {
         this.totalSteps = stepsResp.totalSteps;
@@ -82,7 +87,7 @@ export class Tab3Page {
 
   getTotalDistance(){
     this.loadingTotalDistance = true;
-    fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/totalDistance')
+    fetch('https://in-fit.herokuapp.com/users/' + this.user_id + '/totalDistance')
     .then( (resp) => {
       resp.json().then( (totalDistance) => {
         this.totalDistance = totalDistance.totalDistance;
@@ -95,7 +100,7 @@ export class Tab3Page {
   }
 
   getLast5Steps(){
-    fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/last5Steps')
+    fetch('https://in-fit.herokuapp.com/users/' + this.user_id + '/last5Steps')
     .then( (resp) => {
       resp.json().then( (res) => {
         this.last5Steps = res.reverse();
@@ -109,13 +114,15 @@ export class Tab3Page {
 
   getAverageHR(){
     this.loadingHR = true;
-    fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/last10HR')
+    fetch('https://in-fit.herokuapp.com/users/' + this.user_id + '/last10HR')
     .then( (resp) => {
       resp.json().then( (heartRates) => {
         let heartRatesArr = [];
         heartRates.forEach(element => {
-          if (element.heartRate > 30){
-            heartRatesArr.push(element.heartRate);
+          if(element !== null) {
+            if (element.heartRate > 30){
+              heartRatesArr.push(element.heartRate);
+            }
           }
         });
         this.averageHR = (heartRatesArr.reduce((a,b)=>a+b, 0) / heartRatesArr.length).toFixed(2);
@@ -127,6 +134,15 @@ export class Tab3Page {
     .catch( (err) => {
       console.log('GET totalDistance failed', err);
     });
+  }
+
+  getSubscriptionInfo() {
+    fetch('https://in-fit.herokuapp.com/users/' + this.user_id)
+    .then(resp => resp.json())
+    .then(user => {
+      this.subscriptionFee = user.insurancePlan.monthlyFee;
+      this.renderBudgetChart();
+    })
   }
 
 
@@ -242,7 +258,7 @@ export class Tab3Page {
             label: "Projected expenditure",
             type: "line",
             borderColor: "#8e5ea2",
-            data: [150,300,450,600],
+            data: [this.subscriptionFee, 2*this.subscriptionFee, 3*this.subscriptionFee, 4*this.subscriptionFee],
             fill: false,
             pointBorderWidth: 12,
             pointHoverRadius: 12,
@@ -252,7 +268,7 @@ export class Tab3Page {
             label: "Projected saving",
             type: "line",
             borderColor: "#3e95cd",
-            data: [150,230,320,400],
+            data: [this.subscriptionFee, 1.5 * this.subscriptionFee, 2.3 * this.subscriptionFee, 3 * this.subscriptionFee],
             fill: false,
             pointBorderWidth: 12,
             pointHoverRadius: 12,
@@ -264,13 +280,13 @@ export class Tab3Page {
       options: {
         title: {
           display: true,
-          text: 'Budget expenses'
+          text: 'Total Budget Expenses'
         },
         legend: { display: true },
         scales: {
           yAxes: [{
               ticks: {
-                  display: false
+                  display: true
               },
               gridLines: {
                   drawTicks: false,

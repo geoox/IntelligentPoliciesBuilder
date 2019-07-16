@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { LoaderServiceService } from '../loader-service.service';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-first-use',
@@ -26,7 +27,7 @@ export class FirstUsePage implements OnInit {
   endDate;
 
 
-  constructor(private loader: LoaderServiceService) { }
+  constructor(private loader: LoaderServiceService, public router: Router) { }
 
   ngOnInit() {
     this.user_id = localStorage.getItem('user_id');
@@ -120,6 +121,7 @@ export class FirstUsePage implements OnInit {
     .then(result => {
       console.log('result', result);
       this.loader.dismiss();
+      this.router.navigateByUrl('/user');
     })
     .catch(err => {
       console.log(err);

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>User Details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/user/profile" routerDirection="back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: linear-gradient(to top, #ffffff, #f4f4f6, #e8e9ee, #dbdfe5, #cdd5dc);">
+
+    <ion-card class="carousel-card" [ngClass]="{'background-blue': gender === 'male', 'background-yellow': gender === 'female'}">
+      <div class="loading-screen" *ngIf="loading"></div>
+      <div class="personal-details">
+          <br>
+          <div>Name: {{ name }}</div>
+          <div>Username: {{ userName }}</div>
+          <div>Gender: {{ gender }}</div>
+          <div>Height: {{ height }}</div>
+          <div>Weight: {{ weight }}</div>
+          <div>Birth date: {{ birthdate }} </div>
+          <div>Age: {{ age }} </div>
+          <br>
+      </div>
+
+      <img src="../../assets/img/journalist.png" style="width: 50%; margin: auto;" *ngIf = "gender === 'male'">
+      <img src="../../assets/img/teacher.png" style="width: 50%; margin: auto;" *ngIf = "gender === 'female'">
+      <br>
+    </ion-card>
+
+</ion-content>
