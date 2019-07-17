@@ -44,6 +44,7 @@ export class Tab4Page implements OnInit {
   }
 
   onLogoutTapped() {
+    localStorage.clear();
     this.router.navigateByUrl('/');
   }
 
