@@ -1,58 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta name="viewport" content="width=device-width,user-scalable=no">
-	<title>PolicyBuilder</title>
-	<link rel="stylesheet" href="lib/tau/wearable/theme/default/tau.min.css">
-	<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)" href="lib/tau/wearable/theme/default/tau.circle.min.css">
-	<!-- load theme file for your application -->
-	<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
 
-	<div id="main-page" class="ui-page">
-	   <div id="pageIndicator" class="ui-page-indicator"></div>
-	   <div id="main" class="ui-content">
-	      <div>
-	         <section class="ui-section-active" style="text-align:center" >
-		         <div>
-			         <a href = "pages/page1/page1.html">
-		         	     <button type="button" class="ui-btn ui-btn-icon center-btn"
-					           style="background-image: url('assets/smartwatch.png')">
-					      Button Icon
-					     </button>
-				     </a>
-				     <p class = "center-btn">Health data</p>
-	     		 </div>
-	         </section>
-	         <section style="text-align:center">
-    		     <div>
-			         <a href = "pages/page2/page2.html">
-		         	     <button type="button" class="ui-btn ui-btn-icon center-btn"
-					           style="background-image: url('assets/gold-medal.png')">
-					      Button Icon
-					     </button>
-				     </a>	
-				     <p class = "center-btn">Achievements</p>
-	     		 </div>
-	         </section>
-	         <section style="text-align:center">
-	            <div>
-			         <a href = "pages/page4/page4.html">
-		         	     <button type="button" class="ui-btn ui-btn-icon center-btn"
-					           style="background-image: url('assets/notepad.png')">
-					      Button Icon
-					     </button>
-				     </a>	
- 					 <p class = "center-btn">Sync data</p>
-	     		 </div>
-	         </section>
-	      </div>
-	   </div>
-	</div>
-	<!--Script-->
+<head>
+		<link rel="stylesheet" href="lib/tau/wearable/theme/default/tau.min.css">
+		<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)" href="lib/tau/wearable/theme/default/tau.circle.min.css">
+</head>
+
+<body>
+		<div class="ui-page ui-page-active">
+		   <header class="ui-header ui-has-more">
+		      <h2 class="ui-title" style="padding-right: 0px;">Login</h2>
+		   </header>
+		   <div class="ui-content" style="overflow-y: scroll; padding-bottom: 0px;">
+		   		<input type="text" placeholder="Username" onchange="usernameChanged()" id="username">
+		   		<input type="text" placeholder="PIN" onchange="pinChanged()" id="pin">
+		   </div>
+		   <footer class="ui-footer">
+		      <button type="button" class="ui-btn" onclick="onLoginTapped()">Login</button>
+		   </footer>
+		</div>
+
 	<script src="lib/tau/wearable/js/tau.min.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/api.js"></script>
+
 </body>
 </html>

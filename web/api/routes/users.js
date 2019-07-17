@@ -613,7 +613,25 @@ router.post('/signup', function(req, res) {
        res.status(500).json({
           error: error
        });
-    });;
+    });
+ });
+
+ router.post('/signin-watch', function(req, res){
+    User.findOne({email: req.body.email})
+    .exec()
+    .then(function(user) {
+       if(user.watchPin == req.body.watchPin) {
+            return res.status(200).json({
+                message: 'Authentication successful',
+                user_id: user._id
+            });
+       }
+    })
+    .catch(error => {
+       res.status(500).json({
+          error: error
+       });
+    });
  });
 
 

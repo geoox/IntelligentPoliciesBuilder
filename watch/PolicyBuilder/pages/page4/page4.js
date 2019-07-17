@@ -6,6 +6,7 @@ var currentRun = 0;
 var currentCalories = 0;
 var currentDistance = 0;
 
+
 function onRefreshTapped(){
 	var updatedData = new Date().toDateString();
 	document.getElementById('lastRefresh').innerHTML = updatedData;
@@ -39,7 +40,8 @@ function getHRData(){
 }
 
 function postHRData(HRValue){
-	fetch('https://in-fit.herokuapp.com/users/5d2d8bf88d62bf00047903e4', {
+	var user = localStorage.getItem('user_id');
+	fetch('https://in-fit.herokuapp.com/users/'+user, {
 	    method: 'PATCH',
 	    headers: {
 	      'Accept': 'application/json',
@@ -55,6 +57,7 @@ function postHRData(HRValue){
 }
 
 function getPedometerData(){
+
 	// steps, distance, run (with calories)
 	function onerror(error) {
 	    console.log(error.name + ': ' + error.message);
@@ -116,7 +119,8 @@ function getPedometerData(){
 }
 
 function postSteps(stepsData){
-	fetch('https://in-fit.herokuapp.com/users/5d2d8bf88d62bf00047903e4/patchSteps', {
+	var user = localStorage.getItem('user_id');
+	fetch('https://in-fit.herokuapp.com/users/'+user+'/patchSteps', {
 	    method: 'PATCH',
 	    headers: {
 	      'Accept': 'application/json',
@@ -132,7 +136,8 @@ function postSteps(stepsData){
 }
 
 function postWorkout(runData){
-	fetch('https://in-fit.herokuapp.com/users/5d2d8bf88d62bf00047903e4/patchWorkout', {
+	var user = localStorage.getItem('user_id');
+	fetch('https://in-fit.herokuapp.com/users/'+user+'/patchWorkout', {
 	    method: 'PATCH',
 	    headers: {
 	      'Accept': 'application/json',
@@ -148,7 +153,8 @@ function postWorkout(runData){
 }
 
 function postDistance(distanceData){
-	fetch('https://in-fit.herokuapp.com/users/5d2d8bf88d62bf00047903e4/patchDistance', {
+	var user = localStorage.getItem('user_id');
+	fetch('https://in-fit.herokuapp.com/users/'+user+'/patchDistance', {
 	    method: 'PATCH',
 	    headers: {
 	      'Accept': 'application/json',

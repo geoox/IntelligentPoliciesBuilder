@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+		<link rel="stylesheet" href="../../lib/tau/wearable/theme/default/tau.min.css">
+		<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)" href="../../lib/tau/wearable/theme/default/tau.circle.min.css">
+</head>
+
+<body>
+		<div class="ui-page ui-page-active">
+		   <header class="ui-header ui-has-more">
+		      <h2 class="ui-title" style="padding-right: 0px;">Login</h2>
+		   </header>
+		   <div class="ui-content" style="overflow-y: scroll; padding-bottom: 0px;">
+		   		<input type="text" placeholder="Username" onchange="usernameChanged()" id="username">
+		   		<input type="text" placeholder="PIN" onchange="pinChanged()" id="pin">
+		   </div>
+		   <footer class="ui-footer">
+		      <button type="button" class="ui-btn" onclick="onLoginTapped()">Login</button>
+		   </footer>
+		</div>
+
+	<script src="../../lib/tau/wearable/js/tau.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/api.js"></script>
+    <script src ="login.js"></script>
+
+
+</body>
+</html>

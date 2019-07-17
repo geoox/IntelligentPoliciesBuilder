@@ -1,74 +1,55 @@
-  (function()
+var user_id;
+
+(function()
   {
-	  
-	  tizen.ppm.requestPermission("http://tizen.org/privilege/healthinfo", function(){
-		  tizen.ppm.requestPermission("http://tizen.org/privilege/location", function(){
-			  console.log('sensors available');
-			  
-				//start tracking data
-
-				var options = {
-				    retentionPeriod: 96 /* 96 hours */
-				}
-				try {
-				    tizen.humanactivitymonitor.startRecorder("PEDOMETER", options);
-				} catch (err) {
-				    console.log(err.name + ' - pedometer start err- : ' + err.message);
-				}
-				try {
-				    tizen.humanactivitymonitor.startRecorder("SLEEP_MONITOR", options);
-				} catch (err) {
-				    console.log(err.name + ' - sleep start err- : ' + err.message);
-				}
-		  }, function(){
-			  console.log('location sensors NOT available');
-		  });
-	  }, function(){
-		  console.log('healthinfo sensors NOT available');
-	  });
-
-     var page = document.getElementById("main-page"),
-	     changer = document.getElementById("main"),
-	     sectionChanger,
-	     elPageIndicator = document.getElementById("pageIndicator"),
-	     pageIndicator,
-	     pageIndicatorHandler;
-
-		 page.addEventListener("pagebeforeshow", function()
-		 {
-		    /* Create PageIndicator */
-		    pageIndicator =  tau.widget.PageIndicator(elPageIndicator, {numberOfPages: 3});
-		    pageIndicator.setActive(0);
-		
-		    sectionChanger = new tau.widget.SectionChanger(changer,
-		    {
-		       circular: true,
-		       orientation: "horizontal",
-		       useBouncingEffect: false
-		    });
-		 });
-		
-		 page.addEventListener("pagehide", function()
-		 {
-		    sectionChanger.destroy();
-		    pageIndicator.destroy();
-		 });
-		
-		 /* Indicator setting handler */
-		 pageIndicatorHandler = function(e)
-		 {
-		    pageIndicator.setActive(e.detail.active);
-		 };
-		 
-		
-		 /* Bind the callback */
-		 changer.addEventListener("sectionchange", pageIndicatorHandler, false);
-
-		 window.addEventListener( 'tizenhwkey', function( ev ) {
-			if (ev.keyName === "back") {
-					window.history.back();
-			}
-		});	
+  	user_id = localStorage.getItem('user_id');
+  	if (user_id) {
+  		window.location = "pages/menu/menu.html";
+  	}
 		 		
   })();
   
+var username;
+var pin;
+
+function usernameChanged() {
+	username = document.getElementById('username').value;
+	console.log(username);
+}
+
+function pinChanged() {
+	pin = document.getElementById('pin').value;
+	console.log(pin);
+}
+
+function onLoginTapped() {
+	console.log('on login tapped');
+	console.log('username is: ', username);
+	console.log('pin is: ', pin);
+	
+	var postObj = {
+			"email": username,
+			"watchPin": pin
+	}
+	
+	fetch('https://in-fit.herokuapp.com/users/signin-watch', {
+	      method: 'POST', 
+	      body: JSON.stringify(postObj),
+	      headers:{
+	        'Content-Type': 'application/json',
+	      }
+    })
+    .then(
+		  function(response) {
+		    response.json().then(function(data) {
+		        console.log('logged user:',data);
+		        user_id = data.user_id;
+		        localStorage.setItem('user_id', user_id);
+		        window.location = "pages/menu/menu.html";
+		      });
+		    },
+		   function(err) {
+		    	console.log(err);
+		    }
+		  );
+}

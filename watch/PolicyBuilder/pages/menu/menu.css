@@ -1,0 +1,20 @@
+#main{
+	padding-bottom: 200px;
+}
+
+#main-page{
+	background: linear-gradient(to top, #ffffff, #f4f4f6, #e8e9ee, #dbdfe5, #cdd5dc);
+	color: black;
+}
+
+.ui-page-indicator .ui-page-indicator-item{
+	background-color: #6b6b6b;
+}
+
+.ui-page-indicator .ui-page-indicator-item.ui-page-indicator-active{
+	background-color: black;
+}
+
+.center-btn{
+	margin: auto;
+}
