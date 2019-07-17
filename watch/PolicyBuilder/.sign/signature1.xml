@@ -2,17 +2,37 @@
 <SignedInfo>
 <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></CanonicalizationMethod>
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
+<Reference URI="assets%2Ffavicon.png">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>6x51G59wuoHO3fN049HOczeenZGwUwqhPMjMNly+v2I=</DigestValue>
+</Reference>
+<Reference URI="assets%2Fgold-medal.png">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>0WHUcI3oI4WEBNOfYCUNin7acy+lEW2TLRRAKj+Z8Jo=</DigestValue>
+</Reference>
+<Reference URI="assets%2Fnotepad.png">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>wwLZdtk4KLqG1aYJ8gZ5qwMWPBh7tL9HSE5NdcQQFDM=</DigestValue>
+</Reference>
+<Reference URI="assets%2Fsmartwatch.png">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>zOULQ2ykZxMDliZbPeF8VtGNprV0wVOH/wzTP1UB6S0=</DigestValue>
+</Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>sSyqk4c43kgzzgVYoktNC8SD7rg2NFVQVLw/ipXH//8=</DigestValue>
+<DigestValue>cStDFyhff0XOYCqDbJraV9w/UYalx5/E/fTqm3/EEfU=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>nczVxQciXOFZmLRbclay+7BFMtVE1sGAuviaLhrOX/8=</DigestValue>
+<DigestValue>22fX198hpo4Z2rjyj2nB30fmdz1TSu2X70atGErKJTI=</DigestValue>
 </Reference>
 <Reference URI="css%2Fstyle.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>51Xp2MlxoMlD+GuUaOVFNUiymyfc+5ao16TrZBaTO0E=</DigestValue>
+</Reference>
+<Reference URI="favicon.png">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>pTgmVqE7+AQyc6rJHyVqVZuNeNPT70QRpy/PMPTTuZ4=</DigestValue>
 </Reference>
 <Reference URI="icon.png">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -20,11 +40,11 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>lRIAr49W6lfHsQA1VHip6rBsJSg7y/TOnGWrcjT7SJY=</DigestValue>
+<DigestValue>steVho6XaTJvEb8KlYPX9+VwTm3GPboOwc9qt1VfmPA=</DigestValue>
 </Reference>
 <Reference URI="js%2Fapi.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>j468q5xI+5eWGHwZE2BEXhXkSlULg1JRvklToFjk4BY=</DigestValue>
+<DigestValue>CCdcRUPQWUgtsc+b1DL0aA3rP3tr3BNhWzt9RDPZCxo=</DigestValue>
 </Reference>
 <Reference URI="js%2Fapp.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -1364,11 +1384,11 @@
 </Reference>
 <Reference URI="pages%2Fpage1%2Fpage1.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>QfcIM3aDoBCI4fv+e3JlZ9OilaGghliTxhPRpu63UPE=</DigestValue>
+<DigestValue>nokvcHpstket4fwPeovs2Hx0Vi5iIBrqvnoauyhpsro=</DigestValue>
 </Reference>
 <Reference URI="pages%2Fpage1%2Fpage1.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>x0FDKggp7oaHh44LFsFmjSe65ZGDlVpoAsLksMZnDAY=</DigestValue>
+<DigestValue>wDUTRKWflSdRNfCPeS80EufsT+TxtqioQiDE1LcWc+w=</DigestValue>
 </Reference>
 <Reference URI="pages%2Fpage2%2Fpage2.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -1392,7 +1412,7 @@
 </Reference>
 <Reference URI="pages%2Fpage4%2Fpage4.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>EAlrUkO3pBUj1eRJoB2Dh5LGyoHSqCEvUcy5AB0hOJY=</DigestValue>
+<DigestValue>yGo/eymck3JUVThtr27sZk+Fip5dvqShy/9VosVcdtw=</DigestValue>
 </Reference>
 <Reference URI="#prop">
 <Transforms>
@@ -1403,11 +1423,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-g1zmXfH6w5GGx3jsu52yRTQBo6SlHnni0cLFiQOOW2uRuaud6yLDsfjzYWaJVRFle8ec30G4hN78
-T/Y5/lhF1dkw2pH6KxpUV7UqHJPm5P8m/38IQOUZZ8vrd3uHAfVj4G55duUpnzQlwjTdCaNivKOZ
-vRHD3DQ6oAmA4S5ChCW2vRTKwuPxZOTSBEC+lfEtrSvGPwAoqf/ymBm4glvt6qs5W3aWiIWW1hba
-NUinbimjjGaOoXpDL/TJERkdradA2xKhJv+ryJMxvpCk9VyNYw05BSQ2fWzK6XvftcLGRAV7WA5Z
-k7Q5Xq+NQIjWhow31srcWBSgEmdriQvN01JLag==
+YJEy92Qk87ZYqJaPrOSw2p+cQYEwZT8WpR9cVYmVyy2FkGNm5hWrMXwxAMS7ksmFwHwjVhiWHcPn
+E9kk1OinTtM8NPvbvwmuqMTcBQlULwwx2HzGDnB1j6xrazWnWo9lSvPuPkkXwzSO+0MEGYLppq6c
+zp46tFQJUa6PFnbTIUUPMOC9WjrGA2zIm5GHUEVxmaYR5HvFDfbDl10WhwC7cfOhJSrOAAgWm9xt
+UPBnxMRUTETF0Vg3vh6mnRuFeeNdjOXX1BS8DJ9EiqW83FnPctKY1Wo0G5cUGrVAoGzYXr6hoOgb
+VaA68tPcab3EuCQ+KOnDp1nN6nR9g2f6wIoSeQ==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

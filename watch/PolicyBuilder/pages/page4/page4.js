@@ -1,4 +1,11 @@
 console.log('page 4 js loaded');
+
+var currentHR = 0;
+var currentWalk = 0;
+var currentRun = 0;
+var currentCalories = 0;
+var currentDistance = 0;
+
 function onRefreshTapped(){
 	var updatedData = new Date().toDateString();
 	document.getElementById('lastRefresh').innerHTML = updatedData;
@@ -27,11 +34,12 @@ function getHRData(){
 	function onchangedCB(hrmInfo)
 	{
 		HRValue = hrmInfo.heartRate;
+		currentHR = HRValue;
 	}
 }
 
 function postHRData(HRValue){
-	fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772', {
+	fetch('https://in-fit.herokuapp.com/users/5d2d8bf88d62bf00047903e4', {
 	    method: 'PATCH',
 	    headers: {
 	      'Accept': 'application/json',
@@ -63,6 +71,8 @@ function getPedometerData(){
         stepsObj['endTime'] = lastRecord['endTime'];
         stepsObj['walkStepCount'] = lastRecord['walkStepCount'];
         
+        currentWalk = lastRecord['walkStepCount'];
+        
         console.log('stepsObj', stepsObj);
         postSteps(stepsObj);
         
@@ -72,7 +82,10 @@ function getPedometerData(){
         	runObj['startTime'] = lastRecord['startTime'];
         	runObj['endTime'] = lastRecord['endTime'];
         	runObj['runStepCount'] = lastRecord['runStepCount'];
-        	runObj['calories'] = lastRecord['calories'];
+        	runObj['calories'] = Math.round(lastRecord['calorie']);
+        	
+        	currentRun = lastRecord['runStepCount'];
+        	currentCalories =  Math.round(lastRecord['calorie']);
         	
         	console.log('runObj', runObj);
         	postWorkout(runObj);
@@ -82,6 +95,8 @@ function getPedometerData(){
         distanceObj['startTime'] = lastRecord['startTime'];
         distanceObj['endTime'] = lastRecord['endTime'];
         distanceObj['distance'] = lastRecord['distance'];
+        
+        currentDistance = lastRecord['distance'];
         
         console.log('distanceObj', distanceObj);
         postDistance(distanceObj);
@@ -101,7 +116,7 @@ function getPedometerData(){
 }
 
 function postSteps(stepsData){
-	fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/patchSteps', {
+	fetch('https://in-fit.herokuapp.com/users/5d2d8bf88d62bf00047903e4/patchSteps', {
 	    method: 'PATCH',
 	    headers: {
 	      'Accept': 'application/json',
@@ -117,7 +132,7 @@ function postSteps(stepsData){
 }
 
 function postWorkout(runData){
-	fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/patchWorkout', {
+	fetch('https://in-fit.herokuapp.com/users/5d2d8bf88d62bf00047903e4/patchWorkout', {
 	    method: 'PATCH',
 	    headers: {
 	      'Accept': 'application/json',
@@ -133,7 +148,7 @@ function postWorkout(runData){
 }
 
 function postDistance(distanceData){
-	fetch('https://floating-sea-64607.herokuapp.com/users/5cd9cafcb0903000049da772/patchDistance', {
+	fetch('https://in-fit.herokuapp.com/users/5d2d8bf88d62bf00047903e4/patchDistance', {
 	    method: 'PATCH',
 	    headers: {
 	      'Accept': 'application/json',

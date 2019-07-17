@@ -1,5 +1,5 @@
 console.log('starting to fetch...');
-fetch('https://floating-sea-64607.herokuapp.com/users')
+fetch('https://in-fit.herokuapp.com/users')
 .then(
   function(response) {
     console.log('Get completed, response: ', response);
