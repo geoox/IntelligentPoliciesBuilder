@@ -106,8 +106,11 @@ export class FirstUsePage implements OnInit {
         'tsEnd': this.endDate
       }
     }
-
-    const postArr = [nameObj,genderObj,birthDateObj,heightObj,weightObj,insuranceObj];
+    const pinObj = {
+      'propName': 'watchPin',
+      'value': Math.random().toString().substr(2,4)
+    }
+    const postArr = [nameObj,genderObj,birthDateObj,heightObj,weightObj,insuranceObj,pinObj];
 
     console.log(postArr);
     fetch('https://in-fit.herokuapp.com/users/' + this.user_id, {

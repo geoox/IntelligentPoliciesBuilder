@@ -524,7 +524,7 @@ router.post('/', (req, res, next) => {
         currentPoints: req.body.currentPoints,
         historyPoints: req.body.historyPoints,
         insurancePlan: req.body.insurancePlan,
-        watchPin: Math.random().toString().substr(2,4)
+        watchPin: req.body.watchPin
     });
     newObj.save().then(result=>{
         console.log(result);
