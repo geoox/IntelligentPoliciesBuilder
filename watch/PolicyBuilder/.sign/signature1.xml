@@ -24,7 +24,7 @@
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>QrhjuoyXpSXjvFr2kKvzm40nht5FPW86Sl/dZ555Krw=</DigestValue>
+<DigestValue>mVSclJJ1D8cnmr3SQ6/Kt1YoiJXeFfI9pPQjs/LNwh0=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -1400,11 +1400,11 @@
 </Reference>
 <Reference URI="pages%2Fmenu%2Fmenu.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>JJEdhTLQtAffZ+3BwJUR5sEtYfkeEmLdN+fxFIzEDu0=</DigestValue>
+<DigestValue>DdrmRivrZELxKQuIX0e0I7E49tzuV+7rrpJIz22OSnU=</DigestValue>
 </Reference>
 <Reference URI="pages%2Fmenu%2Fmenu.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>FPTz955YHVuDipF+7qitigDSZZa/wN8egqp4wikZ7yE=</DigestValue>
+<DigestValue>t+pRc33G1697SUJw00RLDhe4ig3jOlR8t2fG9kfaI6o=</DigestValue>
 </Reference>
 <Reference URI="pages%2Fpage1%2Fpage1.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -1451,11 +1451,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-iyc52Mxyq8VQ9tKUS4x0kiUcR5K1W4Z1gekcZhbo/VFSMsiMjy2z1FoazWw+8dEV+x6gNxF24S2y
-ONqUhZtYFLma+5sE8Lhj/e/ZTCqlz7CpWZYKZQM/eCm8QWaEs1xHBt53bWUAvJLwRffZdvBxNLGV
-FKn9HhOu9SudOla/96DhDgvS8mKArPnrDFyZRksmi4wnyWb3BGBPXhpPsq9ldg4yLhHCLN2e7bqH
-BITbcpqRRCM8D3kSB5FGUvOaehypn3qWnpJO7W4sJkCd3gHNLTDdZjmCpHvPnJpo0edKtThXPO8U
-oUBOXmKLEb6kXkDrvOesUES8bwx8vz7Mu38nuA==
+J63xVq6vjNwxFdl/N4CnYVQAfKxEYHzJG+S4fFzQhvpyB5mXSIxpP+x5EILd9mpy5o0vOvrEekT6
+5s/tzV1ESUgkbOXCHjZJiOoGQnFfrmj2/f7Yzt3kRqy7sZuK2dVjN13J/KTDfq8SoLJMZs4Dh1q0
+yuTRBm43zY6tWSMgWfv8cNRkYR9RKXY7DIrgcjy7lByGDrmcOcuDpstwERbETi06n5gpx+BuXVeK
+FsftZwzOjbXis1OnLtmd7x7BgiNkjYzRI1dQMh3Sb6FTxIJ2BOWLcMWdhtNiRNSYPkS6LFc/HSId
+XBycXsN6tq0cvpMuntegrce0mWO5bhnFvOUaCg==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

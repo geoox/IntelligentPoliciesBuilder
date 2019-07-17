@@ -33,7 +33,7 @@ function init() {
 		 page.addEventListener("pagebeforeshow", function()
 		 {
 		    /* Create PageIndicator */
-		    pageIndicator =  tau.widget.PageIndicator(elPageIndicator, {numberOfPages: 3});
+		    pageIndicator =  tau.widget.PageIndicator(elPageIndicator, {numberOfPages: 4});
 		    pageIndicator.setActive(0);
 		
 		    sectionChanger = new tau.widget.SectionChanger(changer,
@@ -71,5 +71,5 @@ function init() {
 function logoutTapped() {
 	console.log('logout tapped');
 	localStorage.clear();
-	window.location = "index.html";
+	window.location = "../../index.html";
 }
