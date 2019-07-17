@@ -45,7 +45,7 @@ export class Tab4Page implements OnInit {
 
   onLogoutTapped() {
     localStorage.clear();
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=> this.router.navigate(['/']));
   }
 
   async onUserDetailsTapped() {
