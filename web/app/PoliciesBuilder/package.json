@@ -26,7 +26,7 @@
     "@ionic/angular": "^4.1.0",
     "apexcharts": "^3.6.10",
     "body-parser": "^1.19.0",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "cordova-android": "7.1.4",
     "cordova-ios": "^4.5.5",
     "cordova-plugin-device": "^2.0.3",
